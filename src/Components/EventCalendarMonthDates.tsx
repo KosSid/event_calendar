@@ -1,9 +1,12 @@
+import { useMemo } from 'react';
+import EventCalendarDay from './EventCalendarDay';
+
 import {
-  format,
   startOfMonth,
   endOfMonth,
   getDay,
   eachDayOfInterval,
+  subDays,
 } from 'date-fns';
 
 interface EventCalendarMonthDatesProps {
@@ -15,25 +18,22 @@ function EventCalendarMonthDates({
 }: EventCalendarMonthDatesProps) {
   const startDayOfMonth = startOfMonth(currentDate);
   const lastDayOfMonth = endOfMonth(currentDate);
-  const daysInMonth = eachDayOfInterval({
-    start: startDayOfMonth,
-    end: lastDayOfMonth,
-  });
-  const startDayOfMonthIndex = getDay(startDayOfMonth);
+
+  const daysInMonth = useMemo(() => {
+    return eachDayOfInterval({
+      start: subDays(startDayOfMonth, getDay(startDayOfMonth)),
+      end: lastDayOfMonth,
+    });
+  }, [startDayOfMonth, lastDayOfMonth]);
+
   return (
     <div className="grid grid-cols-7 gap-2">
-      {Array.from({ length: startDayOfMonthIndex }).map(() => (
-        <div className="border rounded-lg p-2 text-center text-xs sm:text-sm md:text-base">
-          -
-        </div>
-      ))}
-      {daysInMonth.map((day: Date) => (
-        <div
-          key={format(day, 'd')}
-          className="border rounded-lg p-2 text-center text-xs sm:text-sm md:text-base"
-        >
-          {format(day, 'd')}
-        </div>
+      {daysInMonth.map((day: Date, index: number) => (
+        <EventCalendarDay
+          key={index}
+          day={day}
+          startDayOfMonth={startDayOfMonth}
+        />
       ))}
     </div>
   );
