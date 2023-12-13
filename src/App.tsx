@@ -1,4 +1,4 @@
-import EventCalendar from './EventCalendar';
+import EventCalendar from './Components/EventCalendar';
 
 function App() {
   return (
