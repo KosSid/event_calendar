@@ -1,7 +1,7 @@
 import { getYear, getMonth } from 'date-fns';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import EventCalendar from './Components/EventCalendar';
+import EventCalendar from './views/eventCalendar/EventCalendar';
 
 function App() {
   const [currentDate, setCurrentDate] = useState(new Date());

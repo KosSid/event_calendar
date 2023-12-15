@@ -1,5 +1,6 @@
+import React from 'react';
 import { useMemo } from 'react';
-import EventCalendarDay from './EventCalendarDay';
+import EventCalendarDay from '../components/EventCalendarDay';
 
 import {
   startOfMonth,
@@ -13,9 +14,9 @@ interface EventCalendarMonthDatesProps {
   currentDate: Date;
 }
 
-function EventCalendarMonthDates({
+const EventCalendarMonthDates: React.FC<EventCalendarMonthDatesProps> = ({
   currentDate,
-}: EventCalendarMonthDatesProps) {
+}) => {
   const startDayOfMonth = startOfMonth(currentDate);
   const lastDayOfMonth = endOfMonth(currentDate);
 
@@ -37,6 +38,6 @@ function EventCalendarMonthDates({
       ))}
     </div>
   );
-}
+};
 
 export default EventCalendarMonthDates;

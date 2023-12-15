@@ -1,6 +1,8 @@
+import React from 'react';
+
 const WEEKDAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
-function EventCalendarTitleWeekDays() {
+const EventCalendarTitleWeekDays: React.FC = () => {
   return (
     <div className="grid grid-cols-7 gap-2 mb-2">
       {WEEKDAYS.map((day) => (
@@ -13,6 +15,6 @@ function EventCalendarTitleWeekDays() {
       ))}
     </div>
   );
-}
+};
 
 export default EventCalendarTitleWeekDays;
