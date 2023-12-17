@@ -1,0 +1,59 @@
+id,created_at,eventDate,eventType,title,content
+1,2023-01-01T00:00:00+00:00,1/1/2023,public,New Year's Day,Celebration of the New Year.
+2,2023-01-02T00:00:00+00:00,1/16/2023,public,Martin Luther King Jr. Day,Honoring Martin Luther King Jr.
+3,2023-01-15T00:00:00+00:00,1/22/2023,custom,Winter Workshop,A day of creative workshops.
+4,2023-01-20T00:00:00+00:00,1/29/2023,custom,Local Concert,Live music from local bands.
+5,2023-02-01T00:00:00+00:00,2/14/2023,public,Valentine's Day,Celebration of love and affection.
+6,2023-02-02T00:00:00+00:00,2/20/2023,public,President's Day,Honoring past US presidents.
+7,2023-02-15T00:00:00+00:00,2/23/2023,custom,Art Exhibition,Showcase of local art.
+8,2023-02-20T00:00:00+00:00,2/28/2023,custom,Tech Conference,Conference on the latest tech trends.
+9,2023-03-01T00:00:00+00:00,3/8/2023,public,International Women's Day,Celebrating women's achievements.
+10,2023-03-02T00:00:00+00:00,3/17/2023,public,St. Patrick's Day,Celebration of Irish culture.
+11,2023-03-15T00:00:00+00:00,3/24/2023,custom,Spring Market,Local springtime market.
+12,2023-03-20T00:00:00+00:00,3/31/2023,custom,Open Mic Night,Local artists perform live.
+13,2023-04-01T00:00:00+00:00,4/9/2023,public,Easter,Christian holiday celebrating the resurrection of Jesus.
+14,2023-04-02T00:00:00+00:00,4/22/2023,public,Earth Day,Promoting environmental awareness.
+15,2023-04-15T00:00:00+00:00,4/23/2023,custom,Food Festival,A festival celebrating international cuisines.
+16,2023-04-20T00:00:00+00:00,4/30/2023,custom,Jazz Weekend,A weekend of jazz performances.
+17,2023-05-01T00:00:00+00:00,5/1/2023,public,Labor Day (Ukraine),International Workers' Day.
+18,2023-05-09T00:00:00+00:00,5/9/2023,public,Victory Day over Nazism in World War II,Victory Day commemorations.
+19,2023-05-15T00:00:00+00:00,5/15/2023,custom,City Marathon,Annual marathon event.
+20,2023-05-20T00:00:00+00:00,5/20/2023,custom,Food Carnival,Local food and drink festival.
+21,2023-06-01T00:00:00+00:00,6/14/2023,public,Flag Day (US),Commemoration of the American flag.
+22,2023-06-19T00:00:00+00:00,6/19/2023,public,Juneteenth (US),Commemorating the end of slavery in the US.
+23,2023-06-20T00:00:00+00:00,6/20/2023,custom,Summer Concert,Open-air concert event.
+24,2023-06-25T00:00:00+00:00,6/25/2023,custom,Beach Volleyball Tournament,Beach volleyball competition.
+25,2023-07-04T00:00:00+00:00,7/4/2023,public,Independence Day (US),Celebrating the United States' Independence.
+26,2023-07-15T00:00:00+00:00,7/15/2023,custom,Midsummer Fair,A fair with local crafts and foods.
+27,2023-07-20T00:00:00+00:00,7/20/2023,custom,Outdoor Theatre Night,A night of outdoor theatrical performances.
+28,2023-08-24T00:00:00+00:00,8/24/2023,public,Independence Day (Ukraine),Ukrainian National Day.
+29,2023-08-30T00:00:00+00:00,8/30/2023,custom,Jazz by the Lake,Jazz performances by the lakeside.
+30,2023-08-31T00:00:00+00:00,8/31/2023,custom,Film Festival,Showcasing international and local films.
+31,2023-09-04T00:00:00+00:00,9/4/2023,public,Labor Day (US),Honoring the American labor movement.
+32,2023-09-15T00:00:00+00:00,9/15/2023,custom,Harvest Festival,Celebrating the harvest season.
+33,2023-09-22T00:00:00+00:00,9/22/2023,custom,Autumn Equinox Festival,Marking the start of fall.
+34, 2023-10-01T00:00:00+00:00, 2023-10-01, public, Teacher's Day (Ukraine), Honoring educators across Ukraine.
+35, 2023-10-14T00:00:00+00:00, 2023-10-14, public, Defender of Ukraine Day, Celebrating the courage of Ukrainian defenders.
+36, 2023-10-15T00:00:00+00:00, 2023-10-15, custom, Autumn Art Fair, Showcase of local and international artists.
+37, 2023-10-23T00:00:00+00:00, 2023-10-23, custom, Tech Innovation Conference, A conference on emerging technologies.
+38, 2023-10-31T00:00:00+00:00, 2023-10-31, custom, Halloween Parade, Annual Halloween costume parade.
+39, 2023-11-11T00:00:00+00:00, 2023-11-11, public, Veterans Day (US), Honoring military veterans in the US.
+40, 2023-11-24T00:00:00+00:00, 2023-11-24, public, Thanksgiving Day (US), Celebrating gratitude and harvest.
+41, 2023-11-15T00:00:00+00:00, 2023-11-15, custom, International Film Festival, Screening of global cinematic works.
+42, 2023-11-20T00:00:00+00:00, 2023-11-20, custom, Jazz and Blues Festival, Music festival featuring jazz and blues.
+43, 2023-11-30T00:00:00+00:00, 2023-11-30, custom, Winter Market, Traditional winter market with crafts and foods.
+44, 2023-12-25T00:00:00+00:00, 2023-12-25, public, Christmas Day (US), Celebrating Christmas in the US.
+45, 2023-12-31T00:00:00+00:00, 2023-12-31, public, New Year's Eve, Celebrating the end of the year.
+46, 2023-12-10T00:00:00+00:00, 2023-12-10, custom, Ice Sculpture Exhibition, Display of ice sculptures.
+47, 2023-12-15T00:00:00+00:00, 2023-12-15, custom, Charity Gala Event, Gala event for charity fundraising.
+48, 2023-12-20T00:00:00+00:00, 2023-12-20, custom, Winter Solstice Celebration, Celebrating the shortest day of the year.
+49, 2024-01-01T00:00:00+00:00, 2024-01-01, public, New Year's Day, Welcoming the New Year.
+50, 2024-01-20T00:00:00+00:00, 2024-01-20, public, Martin Luther King Jr. Day (US), Honoring civil rights leader MLK Jr.
+51, 2024-01-10T00:00:00+00:00, 2024-01-10, custom, Snow Sports Festival, Festival featuring winter sports.
+52, 2024-01-15T00:00:00+00:00, 2024-01-15, custom, International Book Fair, Exhibition and sale of books worldwide.
+53, 2024-01-25T00:00:00+00:00, 2024-01-25, custom, Winter Music Concert, Concert featuring classical and modern music.
+54, 2024-02-14T00:00:00+00:00, 2024-02-14, public, Valentine's Day, Celebrating love and romance.
+55, 2024-02-19T00:00:00+00:00, 2024-02-19, public, Presidents' Day (US), Honoring past US presidents.
+56, 2024-02-05T00:00:00+00:00, 2024-02-05, custom, International Food Expo, Exhibition showcasing global cuisines.
+57, 2024-02-10T00:00:00+00:00, 2024-02-10, custom, Winter Photography Workshop, Workshop on winter landscape photography.
+58, 2024-02-25T00:00:00+00:00, 2024-02-25, custom, Historical Film Series, Screenings of historical films and documentaries.
