@@ -27,11 +27,11 @@ const EventCalendarTitle: React.FC<EventCalendarTitleProps> = ({
   }
 
   return (
-    <div className="relative flex flex-row items-center justify-center mb-2 bg-slate-300 rounded-lg p-2">
+    <div className="rounded-md shadow relative flex flex-row items-center justify-center mb-2 bg-slate-300 p-2">
       <Button handleClick={() => handleClick('backward')}>
         <GoChevronLeft className="hover:text-sky-800" />
       </Button>
-      <h2 className="w-28 text-center capitalize text-sm sm:text-base sm:w-36 md:text-2xl md:w-52 h-full flex items-center">
+      <h2 className="w-28 text-center capitalize text-sm sm:text-base sm:w-36 md:text-xl md:w-52 h-full flex items-center">
         <span className="p-1 m-auto">{format(currentDate, 'MMMM yyyy')}</span>
       </h2>
       <Button handleClick={() => handleClick('forward')}>
@@ -42,7 +42,7 @@ const EventCalendarTitle: React.FC<EventCalendarTitleProps> = ({
           className="hover:text-sky-800 capitalize text-xs sm:text-base absolute left-0 flex"
           handleClick={() => handleClick('today')}
         >
-          <span className="mx-2">Today</span>
+          <span className="mr-1">Today</span>
           <CgToday />
         </Button>
       )}

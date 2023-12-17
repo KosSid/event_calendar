@@ -2,6 +2,7 @@ import React from 'react';
 import EventCalendarTitle from './components/EventCalendarTitle';
 import EventCalendarTitleWeekDays from './components/EventCalendarTitleWeekDays';
 import EventCalendarMonthDates from './containers/EventCalendarMonthDates';
+import EventsList from './containers/EventsList';
 
 interface EventCalendarProps {
   currentDate: Date;
@@ -20,6 +21,7 @@ const EventCalendar: React.FC<EventCalendarProps> = ({
       />
       <EventCalendarTitleWeekDays />
       <EventCalendarMonthDates currentDate={currentDate} />
+      <EventsList currentDate={currentDate} />
     </div>
   );
 };

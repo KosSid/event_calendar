@@ -8,7 +8,7 @@ const EventCalendarTitleWeekDays: React.FC = () => {
       {WEEKDAYS.map((day) => (
         <div
           key={day}
-          className="uppercase border p-2 rounded-lg bg-slate-300 text-center text-xs sm:text-sm md:text-base"
+          className="rounded-md shadow uppercase border p-2 bg-slate-300 text-center text-xs sm:text-sm md:text-base"
         >
           {day}
         </div>
