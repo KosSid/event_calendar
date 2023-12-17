@@ -1,23 +1,12 @@
 import React from 'react';
 import { format, parseISO } from 'date-fns';
-
-interface Event {
-  id: number;
-  year: number;
-  month: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11;
-  day: number;
-  eventDate: string;
-  eventType: 'public' | 'custom';
-  title: string;
-  content: string;
-  createdAt: string;
-}
+import { EventInterface } from '../interfaces';
 
 interface EventLiProps {
-  event: Event;
+  event: EventInterface;
 }
 
-const EventLi: React.FC<EventLiProps> = ({ event }) => {
+const EventListItem: React.FC<EventLiProps> = ({ event }) => {
   const { title, eventDate, content, eventType } = event;
   return (
     <li className="p-3 mb-2 rounded-md shadow">
@@ -32,4 +21,4 @@ const EventLi: React.FC<EventLiProps> = ({ event }) => {
   );
 };
 
-export default EventLi;
+export default EventListItem;

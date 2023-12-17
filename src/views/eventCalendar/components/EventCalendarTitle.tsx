@@ -31,7 +31,7 @@ const EventCalendarTitle: React.FC<EventCalendarTitleProps> = ({
       <Button handleClick={() => handleClick('backward')}>
         <GoChevronLeft className="hover:text-sky-800" />
       </Button>
-      <h2 className="w-28 text-center capitalize text-sm sm:text-base sm:w-36 md:text-xl md:w-52 h-full flex items-center">
+      <h2 className="w-28 text-center capitalize text-sm sm:text-base md:text-xl sm:w-36 md:w-52 h-full flex items-center">
         <span className="p-1 m-auto">{format(currentDate, 'MMMM yyyy')}</span>
       </h2>
       <Button handleClick={() => handleClick('forward')}>
