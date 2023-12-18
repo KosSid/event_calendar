@@ -1,11 +1,5 @@
 import React from 'react';
-import { twMerge } from 'tailwind-merge';
-import clsx, { ClassValue } from 'clsx';
-
-// utility function to merge tailwind classes defualt | conditional | passed via props
-const cn = (...inputs: ClassValue[]): string => {
-  return twMerge(clsx(...inputs)) || '';
-};
+import { mergeClasses } from '../../utils/utils';
 
 interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
@@ -26,7 +20,7 @@ const Button: React.FC<ButtonProps> = ({
   return (
     <button
       {...restProps}
-      className={cn(
+      className={mergeClasses(
         defaultStyles, //defaault styles
         { 'cursor-not-allowed': isLoading }, // conditional styles
         className, // passed via propes styles

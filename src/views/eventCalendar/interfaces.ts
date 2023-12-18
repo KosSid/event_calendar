@@ -6,3 +6,12 @@ export interface EventInterface {
   eventType: 'public' | 'custom';
   createdAt: string;
 }
+
+export interface EventDayTypeInterface {
+  custom: boolean;
+  public: boolean;
+}
+
+export interface EventTypeAggregateInterface {
+  [key: string]: EventDayTypeInterface;
+}
