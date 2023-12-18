@@ -1,23 +1,29 @@
 import React from 'react';
 import Loading from '../../../common/components/Loading';
-import ErrorPage from '../../../common/components/ErrorComponent';
+import ErrorComponent from '../../../common/components/ErrorComponent';
 import EmptyEvents from '../components/EmptyEvents';
 import EventListItem from '../components/EventListItem';
-import useEvents from '../hooks/useEvents';
+import { EventInterface } from '../interfaces';
+import useFetchEventsData from '../hooks/useFetchEventsData';
+import { getEventsInRange } from '../../../services/apiEvents';
 
 interface EventsListProps {
   currentDate: Date;
 }
 
 const EventsList: React.FC<EventsListProps> = ({ currentDate }) => {
-  const { events, isLoading, error } = useEvents(currentDate);
+  const {
+    data: events,
+    isLoading,
+    error,
+  } = useFetchEventsData(currentDate, getEventsInRange, [] as EventInterface[]);
 
   if (isLoading) {
     return <Loading />;
   }
 
   if (error) {
-    return <ErrorPage errorMessage={error} />;
+    return <ErrorComponent errorMessage={error} />;
   }
 
   if (events.length === 0) {
