@@ -3,7 +3,7 @@ import { startOfMonth, endOfMonth, getDay, eachDayOfInterval, subDays, formatISO
 import EventCalendarDay from '../components/EventCalendarDay';
 import Loading from '../../../common/components/Loading';
 import ErrorComponent from '../../../common/components/ErrorComponent';
-import useFetchEventsData from '../hooks/useFetchEventsData';
+import { useFetchEventsData } from '../../../hooks/useFetchEventsData';
 import { getHolidayTypesBetweenDates } from '../../../services/apiEvents';
 import { EventTypeAggregateInterface } from '../interfaces';
 

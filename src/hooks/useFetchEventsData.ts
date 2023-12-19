@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import { startOfMonth, endOfMonth } from 'date-fns';
 
-function useFetchEventsData<T>(
+export function useFetchEventsData<T>(
   currentDate: Date,
   fetchFunction: (start: Date, end: Date) => Promise<T>,
-  initialData: T,
+  initialData: T
 ) {
   const [data, setData] = useState<T>(initialData);
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -32,5 +32,3 @@ function useFetchEventsData<T>(
 
   return { data, isLoading, error };
 }
-
-export default useFetchEventsData;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { addMonths, format, startOfMonth, isSameMonth } from 'date-fns';
+import { format, isSameMonth, add } from 'date-fns';
 import { GoChevronRight } from 'react-icons/go';
 import { GoChevronLeft } from 'react-icons/go';
 import { CgToday } from 'react-icons/cg';
@@ -10,17 +10,14 @@ interface EventCalendarTitleProps {
   setCurrentDate: React.Dispatch<React.SetStateAction<Date>>;
 }
 
-const EventCalendarTitle: React.FC<EventCalendarTitleProps> = ({
-  currentDate,
-  setCurrentDate,
-}) => {
+const EventCalendarTitle: React.FC<EventCalendarTitleProps> = ({ currentDate, setCurrentDate }) => {
   const isCurrentMonth = isSameMonth(new Date(), currentDate);
 
   function handleClick(direction: 'forward' | 'backward' | 'today') {
     if (direction === 'forward') {
-      setCurrentDate((date: Date) => addMonths(startOfMonth(date), 1));
+      setCurrentDate((date: Date) => add(date, { months: 1 }));
     } else if (direction === 'backward') {
-      setCurrentDate((date: Date) => addMonths(startOfMonth(date), -1));
+      setCurrentDate((date: Date) => add(date, { months: -1 }));
     } else if (direction === 'today') {
       setCurrentDate(new Date());
     }

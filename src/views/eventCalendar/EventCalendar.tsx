@@ -1,24 +1,25 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useGetDateFromUrl } from '../../hooks/useGetDateFromUrl';
+import { useSearchParams } from 'react-router-dom';
+import { formatDateToYearMonthDayObj } from '../../utils/formatDateToYearMonthDayObj';
 import EventCalendarTitle from './components/EventCalendarTitle';
 import EventCalendarTitleWeekDays from './components/EventCalendarTitleWeekDays';
 import EventCalendarMonthDates from './containers/EventCalendarMonthDates';
 import EventsList from './containers/EventsList';
 
-interface EventCalendarProps {
-  currentDate: Date;
-  setCurrentDate: React.Dispatch<React.SetStateAction<Date>>;
-}
+const EventCalendar: React.FC = () => {
+  const date = useGetDateFromUrl();
+  const [currentDate, setCurrentDate] = useState<Date>(date);
+  const [, setSearchParams] = useSearchParams();
 
-const EventCalendar: React.FC<EventCalendarProps> = ({
-  currentDate,
-  setCurrentDate,
-}) => {
+  useEffect(() => {
+    const { year, month, day } = formatDateToYearMonthDayObj(currentDate);
+    setSearchParams({ year, month, day });
+  }, [currentDate, setSearchParams]);
+
   return (
     <div className="container mx-auto p-4 max-w-4xl">
-      <EventCalendarTitle
-        currentDate={currentDate}
-        setCurrentDate={setCurrentDate}
-      />
+      <EventCalendarTitle currentDate={currentDate} setCurrentDate={setCurrentDate} />
       <EventCalendarTitleWeekDays />
       <EventCalendarMonthDates currentDate={currentDate} />
       <EventsList currentDate={currentDate} />
