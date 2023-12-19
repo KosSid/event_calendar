@@ -4,7 +4,7 @@ import ErrorComponent from '../../../common/components/ErrorComponent';
 import EmptyEvents from '../components/EmptyEvents';
 import EventListItem from '../components/EventListItem';
 import { EventInterface } from '../interfaces';
-import useFetchEventsData from '../hooks/useFetchEventsData';
+import { useFetchEventsData } from '../../../hooks/useFetchEventsData';
 import { getEventsInRange } from '../../../services/apiEvents';
 
 interface EventsListProps {
@@ -12,11 +12,7 @@ interface EventsListProps {
 }
 
 const EventsList: React.FC<EventsListProps> = ({ currentDate }) => {
-  const {
-    data: events,
-    isLoading,
-    error,
-  } = useFetchEventsData(currentDate, getEventsInRange, [] as EventInterface[]);
+  const { data: events, isLoading, error } = useFetchEventsData(currentDate, getEventsInRange, [] as EventInterface[]);
 
   if (isLoading) {
     return <Loading />;
