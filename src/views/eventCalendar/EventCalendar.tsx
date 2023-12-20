@@ -8,7 +8,7 @@ import EventCalendarMonthDates from './containers/EventCalendarMonthDates';
 import EventsList from './containers/EventsList';
 
 const EventCalendar: React.FC = () => {
-  const date = useGetDateFromUrl();
+  const date = useGetDateFromUrl() || new Date();
   const [currentDate, setCurrentDate] = useState<Date>(date);
   const [, setSearchParams] = useSearchParams();
 
