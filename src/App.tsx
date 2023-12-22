@@ -1,6 +1,6 @@
 import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import EventCalendar from './views/eventCalendar/EventCalendar';
+import EventCalendar from './pages/EventCalendar';
 
 const App: React.FC = () => {
   return (

@@ -1,6 +1,6 @@
 import React from 'react';
 import { format, parseISO } from 'date-fns';
-import { EventInterface } from '../interfaces';
+import { EventInterface } from '../../interfaces';
 
 interface EventLiProps {
   event: EventInterface;

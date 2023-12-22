@@ -5,7 +5,7 @@ import Loading from '../../../common/components/Loading';
 import ErrorComponent from '../../../common/components/ErrorComponent';
 import { useFetchEventsData } from '../../../hooks/useFetchEventsData';
 import { getHolidayTypesBetweenDates } from '../../../services/apiEvents';
-import { EventTypeAggregateInterface } from '../interfaces';
+import { EventTypeAggregateInterface } from '../../interfaces';
 
 interface EventCalendarMonthDatesProps {
   currentDate: Date;
@@ -28,7 +28,7 @@ const EventCalendarMonthDates: React.FC<EventCalendarMonthDatesProps> = ({ curre
   }, [currentDate]);
 
   if (isLoading) {
-    return <Loading />;
+    return <Loading className="h-80" />;
   }
 
   if (error) {

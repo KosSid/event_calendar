@@ -4,7 +4,7 @@ import ErrorComponent from '../../../common/components/ErrorComponent';
 import EmptyEvents from '../components/EmptyEvents';
 import EventListItem from '../components/EventListItem';
 import { useQuery } from '@tanstack/react-query';
-import { EventInterface } from '../interfaces';
+import { EventInterface } from '../../interfaces';
 import { getEventsInRange } from '../../../services/apiEvents';
 import { endOfMonth, startOfMonth } from 'date-fns';
 

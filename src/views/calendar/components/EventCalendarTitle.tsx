@@ -1,5 +1,7 @@
 import React from 'react';
-import { format, isSameMonth, add } from 'date-fns';
+import { useSearchParams } from 'react-router-dom';
+import { formatDateToYearMonthDayObj } from '../../../utils/formatDateToYearMonthDayObj';
+import { format, isSameMonth, sub, add } from 'date-fns';
 import { GoChevronRight } from 'react-icons/go';
 import { GoChevronLeft } from 'react-icons/go';
 import { CgToday } from 'react-icons/cg';
@@ -11,16 +13,17 @@ interface EventCalendarTitleProps {
 }
 
 const EventCalendarTitle: React.FC<EventCalendarTitleProps> = ({ currentDate, setCurrentDate }) => {
+  const [, setSearchParams] = useSearchParams();
   const isCurrentMonth = isSameMonth(new Date(), currentDate);
 
   function handleClick(direction: 'forward' | 'backward' | 'today') {
-    if (direction === 'forward') {
-      setCurrentDate((date: Date) => add(date, { months: 1 }));
-    } else if (direction === 'backward') {
-      setCurrentDate((date: Date) => add(date, { months: -1 }));
-    } else if (direction === 'today') {
-      setCurrentDate(new Date());
-    }
+    let newDate: Date = new Date();
+    if (direction === 'forward') newDate = add(currentDate, { years: 1 });
+    if (direction === 'backward') newDate = sub(currentDate, { years: 1 });
+    if (direction === 'today') newDate = new Date();
+    const { year, month, day } = formatDateToYearMonthDayObj(newDate);
+    setSearchParams({ year, month, day });
+    setCurrentDate(newDate);
   }
 
   return (

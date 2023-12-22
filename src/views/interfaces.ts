@@ -15,3 +15,8 @@ export interface EventDayTypeInterface {
 export interface EventTypeAggregateInterface {
   [key: string]: EventDayTypeInterface;
 }
+
+export interface EventCalendarProps {
+  currentDate: Date;
+  setCurrentDate: React.Dispatch<React.SetStateAction<Date>>;
+}
