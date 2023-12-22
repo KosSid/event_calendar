@@ -24,25 +24,22 @@ const EventCalendarTitle: React.FC<EventCalendarTitleProps> = ({ currentDate, se
   }
 
   return (
-    <div className="rounded-md shadow relative flex flex-row items-center justify-center mb-2 bg-slate-300 p-2">
-      <Button handleClick={() => handleClick('backward')}>
-        <GoChevronLeft className="hover:text-sky-800" />
-      </Button>
-      <h2 className="w-28 text-center capitalize text-sm sm:text-base md:text-xl sm:w-36 md:w-52 h-full flex items-center">
-        <span className="p-1 m-auto">{format(currentDate, 'MMMM yyyy')}</span>
-      </h2>
-      <Button handleClick={() => handleClick('forward')}>
-        <GoChevronRight className="hover:text-sky-800" />
-      </Button>
+    <div className="relative pt-2 flex flex-row items-center justify-end mb-6 lg:mb-20 lg:pt-6">
       {!isCurrentMonth && (
-        <Button
-          className="hover:text-sky-800 capitalize text-xs sm:text-base absolute left-0 flex"
-          handleClick={() => handleClick('today')}
-        >
-          <span className="mr-1">Today</span>
-          <CgToday />
+        <Button className="flex rounded-lg mr-2" handleClick={() => handleClick('today')}>
+          <span className="mr-1 uppercase text-xs text-gray-400">Today</span>
+          <CgToday className="text-gray-400" />
         </Button>
       )}
+      <Button className="mx-0 rounded-l-lg" handleClick={() => handleClick('backward')}>
+        <GoChevronLeft className="text-gray-400" />
+      </Button>
+      <Button className="mx-0 rounded-r-lg" handleClick={() => handleClick('forward')}>
+        <GoChevronRight className="text-gray-400" />
+      </Button>
+      <h2 className="text-gray-300 text-center ml-2 capitalize text-4xl md:text-5xl lg:text-6xl">
+        {format(currentDate, 'yyyy')}
+      </h2>
     </div>
   );
 };

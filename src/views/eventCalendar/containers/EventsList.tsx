@@ -41,7 +41,7 @@ const EventsList: React.FC<EventsListProps> = ({ currentDate }) => {
     return <EmptyEvents currentDate={currentDate} />;
   }
 
-  return <ul className="mt-2">{events?.map((event) => <EventListItem key={event.id} event={event} />)}</ul>;
+  return <ul className="">{events?.map((event) => <EventListItem key={event.id} event={event} />)}</ul>;
 };
 
 export default EventsList;

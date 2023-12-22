@@ -9,7 +9,7 @@ interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
 }
 
 const Button: React.FC<ButtonProps> = ({ className, handleClick, children, isLoading = false, ...restProps }) => {
-  const defaultStyles = 'bg-slate-300 p-2 mx-2 cursor-pointerflex items-center justify-center';
+  const defaultStyles = 'p-2 mx-2 cursor-pointerflex items-center justify-center';
   return (
     <button
       {...restProps}
