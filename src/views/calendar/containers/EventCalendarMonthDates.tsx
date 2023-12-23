@@ -3,19 +3,28 @@ import { startOfMonth, endOfMonth, getDay, eachDayOfInterval, subDays, formatISO
 import EventCalendarDay from '../components/EventCalendarDay';
 import Loading from '../../../common/components/Loading';
 import ErrorComponent from '../../../common/components/ErrorComponent';
-import { useFetchEventsData } from '../../../hooks/useFetchEventsData';
 import { getHolidayTypesBetweenDates } from '../../../services/apiEvents';
-import { EventCalendarProps, EventTypeAggregateInterface } from '../../interfaces';
+import { EventCalendarProps } from '../../interfaces';
 import { useSearchParams } from 'react-router-dom';
 import { formatDateToYearMonthDayObj } from '../../../utils/formatDateToYearMonthDayObj';
+import { useQuery } from '@tanstack/react-query';
 
 const EventCalendarMonthDates: React.FC<EventCalendarProps> = ({ currentDate, setCurrentDate }) => {
   const [, setSearchParams] = useSearchParams();
+
   const {
     data: eventTypeObj,
     isLoading,
+    isError,
     error,
-  } = useFetchEventsData(currentDate, getHolidayTypesBetweenDates, {} as EventTypeAggregateInterface);
+  } = useQuery({
+    queryKey: ['fetchHolidayTypesBetweenDates', currentDate],
+    queryFn: () => {
+      const startDayInRange = startOfMonth(currentDate);
+      const lastDayInRange = endOfMonth(currentDate);
+      return getHolidayTypesBetweenDates(startDayInRange, lastDayInRange);
+    },
+  });
 
   const daysInMonth = useMemo(() => {
     const lastDayOfMonth = endOfMonth(currentDate);
@@ -36,15 +45,15 @@ const EventCalendarMonthDates: React.FC<EventCalendarProps> = ({ currentDate, se
     return <Loading className="h-80" />;
   }
 
-  if (error) {
-    return <ErrorComponent errorMessage={error} />;
+  if (isError) {
+    return <ErrorComponent errorMessage={error.message} />;
   }
 
   return (
     <div className="grid grid-cols-7 gap-2">
       {daysInMonth.map((day) => {
         const dateKey = formatISO(day, { representation: 'date' });
-        const eventDayType = eventTypeObj[dateKey];
+        const eventDayType = eventTypeObj ? eventTypeObj[dateKey] : undefined;
         const dayProps = {
           key: dateKey,
           day,

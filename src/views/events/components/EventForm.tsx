@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { format } from 'date-fns';
 import { useCreateEvent } from '../../../hooks/useCreateEvent';
 
@@ -13,15 +13,23 @@ export interface CurrentDateProps {
   currentDate: Date;
 }
 
+const initialFormState: EventDataInterface = {
+  title: '',
+  content: '',
+  eventDate: '',
+  eventType: 'custom',
+};
+
 const EventForm: React.FC<CurrentDateProps> = ({ currentDate }) => {
-  const initialFormState: EventDataInterface = {
-    title: 'Event title',
-    content: 'Some event content',
-    eventDate: '',
-    eventType: 'custom',
-  };
   const [formData, setFormData] = useState<EventDataInterface>(initialFormState);
-  const { createEvent, isPending } = useCreateEvent();
+  const { createEvent, isSuccess } = useCreateEvent();
+
+  useEffect(() => {
+    if (isSuccess) {
+      setFormData(initialFormState);
+      console.log('Event created successfully');
+    }
+  }, [isSuccess]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -35,7 +43,7 @@ const EventForm: React.FC<CurrentDateProps> = ({ currentDate }) => {
     e.preventDefault();
     const newFormData = { ...formData, eventDate: format(currentDate, 'yyyy-MM-dd') };
     createEvent(newFormData);
-    console.log(isPending);
+    console.log(isSuccess);
   };
 
   return (
