@@ -20,3 +20,7 @@ export interface EventCalendarProps {
   currentDate: Date;
   setCurrentDate: React.Dispatch<React.SetStateAction<Date>>;
 }
+
+export interface CurrentDateProps {
+  currentDate: Date;
+}

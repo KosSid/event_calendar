@@ -11,8 +11,17 @@ export async function getAllEvents(): Promise<EventInterface[]> {
   return events;
 }
 
+export async function getEventsOnDate(date: Date): Promise<EventInterface[]> {
+  const formattedDate = formatISO(date, { representation: 'date' });
+  const { data: events, error } = await supabase.from('events').select('*').eq('eventDate', formattedDate);
+
+  if (error) {
+    throw new Error(`Error fetching, check getEventsOnDate supabase request: ${error.message}`);
+  }
+  return events;
+}
+
 export async function getEventsInRange(startDate: Date, endDate: Date): Promise<EventInterface[]> {
-  // Format dates to ISO strings
   const formattedStartDate = formatISO(startDate, { representation: 'date' });
   const formattedEndDate = formatISO(endDate, { representation: 'date' });
 
@@ -65,4 +74,20 @@ export async function getHolidayTypesBetweenDates(
   }, {});
 
   return eventsByDate;
+}
+
+export interface EventDataInterface {
+  title: string;
+  content: string;
+  eventDate: string;
+  eventType: 'public' | 'custom';
+}
+
+export async function createEventAPI(newEvent: EventDataInterface) {
+  const response = await supabase.from('events').insert([newEvent]);
+  const { data, error } = response;
+  if (error) {
+    throw new Error(`Error inserting event, check insertEvent supabase request: ${error.message}`);
+  }
+  return data;
 }

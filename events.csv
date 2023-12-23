@@ -1,59 +1,59 @@
 id,created_at,eventDate,eventType,title,content
-1,2023-01-01T00:00:00+00:00,1/1/2023,public,New Year's Day,Celebration of the New Year.
-2,2023-01-02T00:00:00+00:00,1/16/2023,public,Martin Luther King Jr. Day,Honoring Martin Luther King Jr.
-3,2023-01-15T00:00:00+00:00,1/22/2023,custom,Winter Workshop,A day of creative workshops.
-4,2023-01-20T00:00:00+00:00,1/29/2023,custom,Local Concert,Live music from local bands.
-5,2023-02-01T00:00:00+00:00,2/14/2023,public,Valentine's Day,Celebration of love and affection.
-6,2023-02-02T00:00:00+00:00,2/20/2023,public,President's Day,Honoring past US presidents.
-7,2023-02-15T00:00:00+00:00,2/23/2023,custom,Art Exhibition,Showcase of local art.
-8,2023-02-20T00:00:00+00:00,2/28/2023,custom,Tech Conference,Conference on the latest tech trends.
-9,2023-03-01T00:00:00+00:00,3/8/2023,public,International Women's Day,Celebrating women's achievements.
-10,2023-03-02T00:00:00+00:00,3/17/2023,public,St. Patrick's Day,Celebration of Irish culture.
-11,2023-03-15T00:00:00+00:00,3/24/2023,custom,Spring Market,Local springtime market.
-12,2023-03-20T00:00:00+00:00,3/31/2023,custom,Open Mic Night,Local artists perform live.
-13,2023-04-01T00:00:00+00:00,4/9/2023,public,Easter,Christian holiday celebrating the resurrection of Jesus.
-14,2023-04-02T00:00:00+00:00,4/22/2023,public,Earth Day,Promoting environmental awareness.
-15,2023-04-15T00:00:00+00:00,4/23/2023,custom,Food Festival,A festival celebrating international cuisines.
-16,2023-04-20T00:00:00+00:00,4/30/2023,custom,Jazz Weekend,A weekend of jazz performances.
-17,2023-05-01T00:00:00+00:00,5/1/2023,public,Labor Day (Ukraine),International Workers' Day.
-18,2023-05-09T00:00:00+00:00,5/9/2023,public,Victory Day over Nazism in World War II,Victory Day commemorations.
-19,2023-05-15T00:00:00+00:00,5/15/2023,custom,City Marathon,Annual marathon event.
-20,2023-05-20T00:00:00+00:00,5/20/2023,custom,Food Carnival,Local food and drink festival.
-21,2023-06-01T00:00:00+00:00,6/14/2023,public,Flag Day (US),Commemoration of the American flag.
-22,2023-06-19T00:00:00+00:00,6/19/2023,public,Juneteenth (US),Commemorating the end of slavery in the US.
-23,2023-06-20T00:00:00+00:00,6/20/2023,custom,Summer Concert,Open-air concert event.
-24,2023-06-25T00:00:00+00:00,6/25/2023,custom,Beach Volleyball Tournament,Beach volleyball competition.
-25,2023-07-04T00:00:00+00:00,7/4/2023,public,Independence Day (US),Celebrating the United States' Independence.
-26,2023-07-15T00:00:00+00:00,7/15/2023,custom,Midsummer Fair,A fair with local crafts and foods.
-27,2023-07-20T00:00:00+00:00,7/20/2023,custom,Outdoor Theatre Night,A night of outdoor theatrical performances.
-28,2023-08-24T00:00:00+00:00,8/24/2023,public,Independence Day (Ukraine),Ukrainian National Day.
-29,2023-08-30T00:00:00+00:00,8/30/2023,custom,Jazz by the Lake,Jazz performances by the lakeside.
-30,2023-08-31T00:00:00+00:00,8/31/2023,custom,Film Festival,Showcasing international and local films.
-31,2023-09-04T00:00:00+00:00,9/4/2023,public,Labor Day (US),Honoring the American labor movement.
-32,2023-09-15T00:00:00+00:00,9/15/2023,custom,Harvest Festival,Celebrating the harvest season.
-33,2023-09-22T00:00:00+00:00,9/22/2023,custom,Autumn Equinox Festival,Marking the start of fall.
-34,2023-10-01T00:00:00+00:00,10/1/2023,public,Teacher'sDay(Ukraine),HonoringeducatorsacrossUkraine.
-35,2023-10-14T00:00:00+00:00,10/14/2023,public,DefenderofUkraineDay,CelebratingthecourageofUkrainiandefenders.
-36,2023-10-15T00:00:00+00:00,10/15/2023,custom,AutumnArtFair,Showcaseoflocalandinternationalartists.
-37,2023-10-23T00:00:00+00:00,10/23/2023,custom,TechInnovationConference,Aconferenceonemergingtechnologies.
-38,2023-10-31T00:00:00+00:00,10/31/2023,custom,HalloweenParade,AnnualHalloweencostumeparade.
-39,2023-11-11T00:00:00+00:00,11/11/2023,public,VeteransDay(US),HonoringmilitaryveteransintheUS.
-40,2023-11-24T00:00:00+00:00,11/24/2023,public,ThanksgivingDay(US),Celebratinggratitudeandharvest.
-41,2023-11-15T00:00:00+00:00,11/15/2023,custom,InternationalFilmFestival,Screeningofglobalcinematicworks.
-42,2023-11-20T00:00:00+00:00,11/20/2023,custom,JazzandBluesFestival,Musicfestivalfeaturingjazzandblues.
-43,2023-11-30T00:00:00+00:00,11/30/2023,custom,WinterMarket,Traditionalwintermarketwithcraftsandfoods.
-44,2023-12-25T00:00:00+00:00,12/25/2023,public,ChristmasDay(US),CelebratingChristmasintheUS.
-45,2023-12-31T00:00:00+00:00,12/31/2023,public,NewYear'sEve,Celebratingtheendoftheyear.
-46,2023-12-10T00:00:00+00:00,12/10/2023,custom,IceSculptureExhibition,Displayoficesculptures.
-47,2023-12-15T00:00:00+00:00,12/15/2023,custom,CharityGalaEvent,Galaeventforcharityfundraising.
-48,2023-12-20T00:00:00+00:00,12/20/2023,custom,WinterSolsticeCelebration,Celebratingtheshortestdayoftheyear.
-49,2024-01-01T00:00:00+00:00,1/1/2024,public,NewYear'sDay,WelcomingtheNewYear.
-50,2024-01-20T00:00:00+00:00,1/20/2024,public,MartinLutherKingJr.Day(US),HonoringcivilrightsleaderMLKJr.
-51,2024-01-10T00:00:00+00:00,1/10/2024,custom,SnowSportsFestival,Festivalfeaturingwintersports.
-52,2024-01-15T00:00:00+00:00,1/15/2024,custom,InternationalBookFair,Exhibitionandsaleofbooksworldwide.
-53,2024-01-25T00:00:00+00:00,1/25/2024,custom,WinterMusicConcert,Concertfeaturingclassicalandmodernmusic.
-54,2024-02-14T00:00:00+00:00,2/14/2024,public,Valentine'sDay,Celebratingloveandromance.
-55,2024-02-19T00:00:00+00:00,2/19/2024,public,Presidents'Day(US),HonoringpastUSpresidents.
-56,2024-02-05T00:00:00+00:00,2/5/2024,custom,InternationalFoodExpo,Exhibitionshowcasingglobalcuisines.
-57,2024-02-10T00:00:00+00:00,2/10/2024,custom,WinterPhotographyWorkshop,Workshoponwinterlandscapephotography.
-58,2024-02-25T00:00:00+00:00,2/25/2024,custom,HistoricalFilmSeries,Screeningsofhistoricalfilmsanddocumentaries.
+7777777771,2023-01-01T00:00:00+00:00,1/1/2023,public,New Year's Day,Celebration of the New Year.
+7777777772,2023-01-02T00:00:00+00:00,1/16/2023,public,Martin Luther King Jr. Day,Honoring Martin Luther King Jr.
+7777777773,2023-01-15T00:00:00+00:00,1/22/2023,custom,Winter Workshop,A day of creative workshops.
+7777777774,2023-01-20T00:00:00+00:00,1/29/2023,custom,Local Concert,Live music from local bands.
+7777777775,2023-02-01T00:00:00+00:00,2/14/2023,public,Valentine's Day,Celebration of love and affection.
+7777777776,2023-02-02T00:00:00+00:00,2/20/2023,public,President's Day,Honoring past US presidents.
+7777777777,2023-02-15T00:00:00+00:00,2/23/2023,custom,Art Exhibition,Showcase of local art.
+7777777778,2023-02-20T00:00:00+00:00,2/28/2023,custom,Tech Conference,Conference on the latest tech trends.
+7777777779,2023-03-01T00:00:00+00:00,3/8/2023,public,International Women's Day,Celebrating women's achievements.
+7777777780,2023-03-02T00:00:00+00:00,3/17/2023,public,St. Patrick's Day,Celebration of Irish culture.
+7777777781,2023-03-15T00:00:00+00:00,3/24/2023,custom,Spring Market,Local springtime market.
+7777777782,2023-03-20T00:00:00+00:00,3/31/2023,custom,Open Mic Night,Local artists perform live.
+7777777783,2023-04-01T00:00:00+00:00,4/9/2023,public,Easter,Christian holiday celebrating the resurrection of Jesus.
+7777777784,2023-04-02T00:00:00+00:00,4/22/2023,public,Earth Day,Promoting environmental awareness.
+7777777785,2023-04-15T00:00:00+00:00,4/23/2023,custom,Food Festival,A festival celebrating international cuisines.
+7777777786,2023-04-20T00:00:00+00:00,4/30/2023,custom,Jazz Weekend,A weekend of jazz performances.
+7777777787,2023-05-01T00:00:00+00:00,5/1/2023,public,Labor Day (Ukraine),International Workers' Day.
+7777777788,2023-05-09T00:00:00+00:00,5/9/2023,public,Victory Day over Nazism in World War II,Victory Day commemorations.
+7777777789,2023-05-15T00:00:00+00:00,5/15/2023,custom,City Marathon,Annual marathon event.
+7777777790,2023-05-20T00:00:00+00:00,5/20/2023,custom,Food Carnival,Local food and drink festival.
+7777777791,2023-06-01T00:00:00+00:00,6/14/2023,public,Flag Day (US),Commemoration of the American flag.
+7777777792,2023-06-19T00:00:00+00:00,6/19/2023,public,Juneteenth (US),Commemorating the end of slavery in the US.
+7777777793,2023-06-20T00:00:00+00:00,6/20/2023,custom,Summer Concert,Open-air concert event.
+7777777794,2023-06-25T00:00:00+00:00,6/25/2023,custom,Beach Volleyball Tournament,Beach volleyball competition.
+7777777795,2023-07-04T00:00:00+00:00,7/4/2023,public,Independence Day (US),Celebrating the United States' Independence.
+7777777796,2023-07-15T00:00:00+00:00,7/15/2023,custom,Midsummer Fair,A fair with local crafts and foods.
+7777777797,2023-07-20T00:00:00+00:00,7/20/2023,custom,Outdoor Theatre Night,A night of outdoor theatrical performances.
+7777777798,2023-08-24T00:00:00+00:00,8/24/2023,public,Independence Day (Ukraine),Ukrainian National Day.
+7777777799,2023-08-30T00:00:00+00:00,8/30/2023,custom,Jazz by the Lake,Jazz performances by the lakeside.
+7777777800,2023-08-31T00:00:00+00:00,8/31/2023,custom,Film Festival,Showcasing international and local films.
+7777777801,2023-09-04T00:00:00+00:00,9/4/2023,public,Labor Day (US),Honoring the American labor movement.
+7777777802,2023-09-15T00:00:00+00:00,9/15/2023,custom,Harvest Festival,Celebrating the harvest season.
+7777777803,2023-09-22T00:00:00+00:00,9/22/2023,custom,Autumn Equinox Festival,Marking the start of fall.
+7777777804,2023-10-01T00:00:00+00:00,10/1/2023,public,Teacher'sDay(Ukraine),HonoringeducatorsacrossUkraine.
+7777777805,2023-10-14T00:00:00+00:00,10/14/2023,public,DefenderofUkraineDay,CelebratingthecourageofUkrainiandefenders.
+7777777806,2023-10-15T00:00:00+00:00,10/15/2023,custom,AutumnArtFair,Showcaseoflocalandinternationalartists.
+7777777807,2023-10-23T00:00:00+00:00,10/23/2023,custom,TechInnovationConference,Aconferenceonemergingtechnologies.
+7777777808,2023-10-31T00:00:00+00:00,10/31/2023,custom,HalloweenParade,AnnualHalloweencostumeparade.
+7777777809,2023-11-11T00:00:00+00:00,11/11/2023,public,VeteransDay(US),HonoringmilitaryveteransintheUS.
+7777777810,2023-11-24T00:00:00+00:00,11/24/2023,public,ThanksgivingDay(US),Celebratinggratitudeandharvest.
+7777777811,2023-11-15T00:00:00+00:00,11/15/2023,custom,InternationalFilmFestival,Screeningofglobalcinematicworks.
+7777777812,2023-11-20T00:00:00+00:00,11/20/2023,custom,JazzandBluesFestival,Musicfestivalfeaturingjazzandblues.
+7777777813,2023-11-30T00:00:00+00:00,11/30/2023,custom,WinterMarket,Traditionalwintermarketwithcraftsandfoods.
+7777777814,2023-12-25T00:00:00+00:00,12/25/2023,public,ChristmasDay(US),CelebratingChristmasintheUS.
+7777777815,2023-12-31T00:00:00+00:00,12/31/2023,public,NewYear'sEve,Celebratingtheendoftheyear.
+7777777816,2023-12-10T00:00:00+00:00,12/10/2023,custom,IceSculptureExhibition,Displayoficesculptures.
+7777777817,2023-12-15T00:00:00+00:00,12/15/2023,custom,CharityGalaEvent,Galaeventforcharityfundraising.
+7777777818,2023-12-20T00:00:00+00:00,12/20/2023,custom,WinterSolsticeCelebration,Celebratingtheshortestdayoftheyear.
+7777777819,2024-01-01T00:00:00+00:00,1/1/2024,public,NewYear'sDay,WelcomingtheNewYear.
+7777777820,2024-01-20T00:00:00+00:00,1/20/2024,public,MartinLutherKingJr.Day(US),HonoringcivilrightsleaderMLKJr.
+7777777821,2024-01-10T00:00:00+00:00,1/10/2024,custom,SnowSportsFestival,Festivalfeaturingwintersports.
+7777777822,2024-01-15T00:00:00+00:00,1/15/2024,custom,InternationalBookFair,Exhibitionandsaleofbooksworldwide.
+7777777823,2024-01-25T00:00:00+00:00,1/25/2024,custom,WinterMusicConcert,Concertfeaturingclassicalandmodernmusic.
+7777777824,2024-02-14T00:00:00+00:00,2/14/2024,public,Valentine'sDay,Celebratingloveandromance.
+7777777825,2024-02-19T00:00:00+00:00,2/19/2024,public,Presidents'Day(US),HonoringpastUSpresidents.
+7777777826,2024-02-05T00:00:00+00:00,2/5/2024,custom,InternationalFoodExpo,Exhibitionshowcasingglobalcuisines.
+7777777827,2024-02-10T00:00:00+00:00,2/10/2024,custom,WinterPhotographyWorkshop,Workshoponwinterlandscapephotography.
+7777777828,2024-02-25T00:00:00+00:00,2/25/2024,custom,HistoricalFilmSeries,Screeningsofhistoricalfilmsanddocumentaries.

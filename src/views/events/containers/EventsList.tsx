@@ -4,29 +4,21 @@ import ErrorComponent from '../../../common/components/ErrorComponent';
 import EmptyEvents from '../components/EmptyEvents';
 import EventListItem from '../components/EventListItem';
 import { useQuery } from '@tanstack/react-query';
-import { EventInterface } from '../../interfaces';
-import { getEventsInRange } from '../../../services/apiEvents';
-import { endOfMonth, startOfMonth } from 'date-fns';
+import { getEventsOnDate } from '../../../services/apiEvents';
 
 interface EventsListProps {
   currentDate: Date;
 }
 
 const EventsList: React.FC<EventsListProps> = ({ currentDate }) => {
-  const handleFetchEventsInRange = (date: Date): (() => Promise<EventInterface[]>) => {
-    const startDayInRange = startOfMonth(date);
-    const lastDayInRange = endOfMonth(date);
-    return () => getEventsInRange(startDayInRange, lastDayInRange);
-  };
-
   const {
     data: events,
     isLoading,
     isError,
     error,
   } = useQuery({
-    queryKey: ['events', currentDate],
-    queryFn: handleFetchEventsInRange(currentDate),
+    queryKey: ['fetchEventsOnDate', currentDate],
+    queryFn: () => getEventsOnDate(currentDate),
   });
 
   if (isLoading) {

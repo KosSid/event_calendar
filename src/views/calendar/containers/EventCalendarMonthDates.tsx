@@ -5,13 +5,12 @@ import Loading from '../../../common/components/Loading';
 import ErrorComponent from '../../../common/components/ErrorComponent';
 import { useFetchEventsData } from '../../../hooks/useFetchEventsData';
 import { getHolidayTypesBetweenDates } from '../../../services/apiEvents';
-import { EventTypeAggregateInterface } from '../../interfaces';
+import { EventCalendarProps, EventTypeAggregateInterface } from '../../interfaces';
+import { useSearchParams } from 'react-router-dom';
+import { formatDateToYearMonthDayObj } from '../../../utils/formatDateToYearMonthDayObj';
 
-interface EventCalendarMonthDatesProps {
-  currentDate: Date;
-}
-
-const EventCalendarMonthDates: React.FC<EventCalendarMonthDatesProps> = ({ currentDate }) => {
+const EventCalendarMonthDates: React.FC<EventCalendarProps> = ({ currentDate, setCurrentDate }) => {
+  const [, setSearchParams] = useSearchParams();
   const {
     data: eventTypeObj,
     isLoading,
@@ -26,6 +25,12 @@ const EventCalendarMonthDates: React.FC<EventCalendarMonthDatesProps> = ({ curre
       end: lastDayOfMonth,
     });
   }, [currentDate]);
+
+  const handleClickOnCalendarDay = (inputDate: Date) => {
+    const { year, month, day } = formatDateToYearMonthDayObj(inputDate);
+    setSearchParams({ year, month, day });
+    setCurrentDate(inputDate);
+  };
 
   if (isLoading) {
     return <Loading className="h-80" />;
@@ -46,7 +51,7 @@ const EventCalendarMonthDates: React.FC<EventCalendarMonthDatesProps> = ({ curre
           startDayOfMonth: startOfMonth(currentDate),
           ...(eventDayType && { eventType: eventDayType }),
         };
-        return <EventCalendarDay {...dayProps} />;
+        return <EventCalendarDay {...dayProps} handleClick={handleClickOnCalendarDay} />;
       })}
     </div>
   );

@@ -40,9 +40,7 @@ const EventCalendarTitle: React.FC<EventCalendarTitleProps> = ({ currentDate, se
       <Button className="mx-0 rounded-r-lg" handleClick={() => handleClick('forward')}>
         <GoChevronRight className="text-gray-400" />
       </Button>
-      <h2 className="text-gray-300 text-center ml-2 capitalize text-4xl md:text-5xl lg:text-6xl">
-        {format(currentDate, 'yyyy')}
-      </h2>
+      <h2 className="text-gray-300 text-center ml-2 text-4xl md:text-5xl lg:text-6xl">{format(currentDate, 'yyyy')}</h2>
     </div>
   );
 };

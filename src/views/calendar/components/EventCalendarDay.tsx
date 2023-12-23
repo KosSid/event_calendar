@@ -9,11 +9,13 @@ interface EventCalendarDayProps {
   day: Date;
   startDayOfMonth: Date;
   eventType?: EventDayTypeInterface;
+  handleClick: (day: Date) => void;
 }
 
-const EventCalendarDay: React.FC<EventCalendarDayProps> = ({ day, startDayOfMonth, eventType }) => {
+const EventCalendarDay: React.FC<EventCalendarDayProps> = ({ day, startDayOfMonth, eventType, handleClick }) => {
   return (
     <div
+      onClick={() => handleClick(day)}
       className={clsx(
         'border h-12 rounded-lg p-2 text-center text-xs sm:h-14 sm:text-sm md:text-base md:h-16 lg:h-20 lg:text-2xl hover:text-red-200 transition-all ease-linear duration-800 cursor-pointer flex flex-col items-center justify-center',
         {
