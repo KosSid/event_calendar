@@ -2,26 +2,26 @@ import { formatISO } from 'date-fns';
 import supabase from './supabase';
 import { EventInterface, EventTypeAggregateInterface } from '../views/interfaces';
 
-export async function getAllEvents(): Promise<EventInterface[]> {
+export async function getAllEventsAPI(): Promise<EventInterface[]> {
   const { data: events, error } = await supabase.from('events').select('*');
   if (error) {
-    throw new Error(`Error fetching, check getAllEvents supabase request: ${error.message}`);
+    throw new Error(`Error fetching, check getAllEventsAPI supabase request: ${error.message}`);
   }
 
   return events;
 }
 
-export async function getEventsOnDate(date: Date): Promise<EventInterface[]> {
+export async function getEventsOnDateAPI(date: Date): Promise<EventInterface[]> {
   const formattedDate = formatISO(date, { representation: 'date' });
   const { data: events, error } = await supabase.from('events').select('*').eq('eventDate', formattedDate);
 
   if (error) {
-    throw new Error(`Error fetching, check getEventsOnDate supabase request: ${error.message}`);
+    throw new Error(`Error fetching, check getEventsOnDateAPI supabase request: ${error.message}`);
   }
   return events;
 }
 
-export async function getEventsInRange(startDate: Date, endDate: Date): Promise<EventInterface[]> {
+export async function getEventsInRangeAPI(startDate: Date, endDate: Date): Promise<EventInterface[]> {
   const formattedStartDate = formatISO(startDate, { representation: 'date' });
   const formattedEndDate = formatISO(endDate, { representation: 'date' });
 
@@ -32,13 +32,13 @@ export async function getEventsInRange(startDate: Date, endDate: Date): Promise<
     .lte('eventDate', formattedEndDate);
 
   if (error) {
-    throw new Error(`Error fetching, check getEventsInRange supabase request: ${error.message}`);
+    throw new Error(`Error fetching, check getEventsInRangeAPI supabase request: ${error.message}`);
   }
 
   return events;
 }
 
-export async function getHolidayTypesBetweenDates(
+export async function getHolidayTypesBetweenDatesAPI(
   startDate: Date,
   endDate: Date
 ): Promise<EventTypeAggregateInterface> {
@@ -52,7 +52,7 @@ export async function getHolidayTypesBetweenDates(
     .lte('eventDate', formattedEndDate);
 
   if (error) {
-    throw new Error(`Error fetching, check getHolidayTypesBetweenDates supabase request: ${error.message}`);
+    throw new Error(`Error fetching, check getHolidayTypesBetweenDatesAPI supabase request: ${error.message}`);
   }
 
   const eventsByDate = events.reduce<EventTypeAggregateInterface>((accumulator, event) => {
@@ -88,6 +88,15 @@ export async function createEventAPI(newEvent: EventDataInterface) {
   const { data, error } = response;
   if (error) {
     throw new Error(`Error inserting event, check insertEvent supabase request: ${error.message}`);
+  }
+  return data;
+}
+
+export async function deleteEventAPI(eventId: number) {
+  const response = await supabase.from('events').delete().match({ id: eventId });
+  const { data, error } = response;
+  if (error) {
+    throw new Error(`Error deleting event, check deleteEventAPI supabase request: ${error.message}`);
   }
   return data;
 }

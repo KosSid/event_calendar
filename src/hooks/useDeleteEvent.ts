@@ -1,17 +1,18 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { toast } from 'react-hot-toast';
-import { createEventAPI } from '../services/apiEvents';
+import { deleteEventAPI } from '../services/apiEvents';
 
-export function useCreateEvent() {
+export function useDeleteEvent() {
   const queryClient = useQueryClient();
-  const { mutate: createEvent, isSuccess } = useMutation({
-    mutationFn: createEventAPI,
+  const { mutate: deleteEvent } = useMutation({
+    mutationFn: deleteEventAPI,
     onSuccess: () => {
-      toast.success('New event successfully created');
+      toast.success('Event successfully deleted');
       queryClient.invalidateQueries({ queryKey: ['fetchEventsOnDate'] });
       queryClient.invalidateQueries({ queryKey: ['fetchHolidayTypesBetweenDates'] });
     },
     onError: (err) => toast.error(err.message),
   });
-  return { isSuccess, createEvent };
+
+  return { deleteEvent };
 }

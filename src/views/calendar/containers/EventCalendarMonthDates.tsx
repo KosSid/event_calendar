@@ -3,28 +3,14 @@ import { startOfMonth, endOfMonth, getDay, eachDayOfInterval, subDays, formatISO
 import EventCalendarDay from '../components/EventCalendarDay';
 import Loading from '../../../common/components/Loading';
 import ErrorComponent from '../../../common/components/ErrorComponent';
-import { getHolidayTypesBetweenDates } from '../../../services/apiEvents';
 import { EventCalendarProps } from '../../interfaces';
 import { useSearchParams } from 'react-router-dom';
 import { formatDateToYearMonthDayObj } from '../../../utils/formatDateToYearMonthDayObj';
-import { useQuery } from '@tanstack/react-query';
+import useFetchHolidayTypes from '../../../hooks/useFetchHolidayTypes';
 
 const EventCalendarMonthDates: React.FC<EventCalendarProps> = ({ currentDate, setCurrentDate }) => {
   const [, setSearchParams] = useSearchParams();
-
-  const {
-    data: eventTypeObj,
-    isLoading,
-    isError,
-    error,
-  } = useQuery({
-    queryKey: ['fetchHolidayTypesBetweenDates', currentDate],
-    queryFn: () => {
-      const startDayInRange = startOfMonth(currentDate);
-      const lastDayInRange = endOfMonth(currentDate);
-      return getHolidayTypesBetweenDates(startDayInRange, lastDayInRange);
-    },
-  });
+  const { data: eventTypeObj, isLoading, error } = useFetchHolidayTypes(currentDate);
 
   const daysInMonth = useMemo(() => {
     const lastDayOfMonth = endOfMonth(currentDate);
@@ -45,7 +31,7 @@ const EventCalendarMonthDates: React.FC<EventCalendarProps> = ({ currentDate, se
     return <Loading className="h-80" />;
   }
 
-  if (isError) {
+  if (error) {
     return <ErrorComponent errorMessage={error.message} />;
   }
 
@@ -57,7 +43,7 @@ const EventCalendarMonthDates: React.FC<EventCalendarProps> = ({ currentDate, se
         const dayProps = {
           key: dateKey,
           day,
-          startDayOfMonth: startOfMonth(currentDate),
+          currentDate,
           ...(eventDayType && { eventType: eventDayType }),
         };
         return <EventCalendarDay {...dayProps} handleClick={handleClickOnCalendarDay} />;

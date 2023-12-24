@@ -40,7 +40,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
               fontSize: '16px',
               maxWidth: '500px',
               padding: '16px 24px',
-              backgroundColor: 'var(--color-grey-0)',
+              backgroundColor: '#fef2f2',
               color: 'var(--color-grey-700)',
             },
           }}
