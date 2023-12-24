@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { format } from 'date-fns';
 import { useCreateEvent } from '../../../hooks/useCreateEvent';
+import Button from '../../../common/components/Button';
 
 export interface EventDataInterface {
   title: string;
@@ -22,7 +23,7 @@ const initialFormState: EventDataInterface = {
 
 const EventForm: React.FC<CurrentDateProps> = ({ currentDate }) => {
   const [formData, setFormData] = useState<EventDataInterface>(initialFormState);
-  const { createEvent, isSuccess } = useCreateEvent();
+  const { createEvent, isSuccess, isPending } = useCreateEvent();
 
   useEffect(() => {
     if (isSuccess) {
@@ -91,12 +92,9 @@ const EventForm: React.FC<CurrentDateProps> = ({ currentDate }) => {
         />
       </div>
       <div className="flex items-center justify-between">
-        <button
-          type="submit"
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mx-auto"
-        >
+        <Button disabled={isPending} type="submit" className="bg-red-300 rounded mx-auto px-4 text-red-50">
           Submit
-        </button>
+        </Button>
       </div>
     </form>
   );

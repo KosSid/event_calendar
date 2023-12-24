@@ -4,7 +4,11 @@ import { createEventAPI } from '../services/apiEvents';
 
 export function useCreateEvent() {
   const queryClient = useQueryClient();
-  const { mutate: createEvent, isSuccess } = useMutation({
+  const {
+    mutate: createEvent,
+    isSuccess,
+    isPending,
+  } = useMutation({
     mutationFn: createEventAPI,
     onSuccess: () => {
       toast.success('New event successfully created');
@@ -13,5 +17,5 @@ export function useCreateEvent() {
     },
     onError: (err) => toast.error(err.message),
   });
-  return { isSuccess, createEvent };
+  return { isSuccess, createEvent, isPending };
 }

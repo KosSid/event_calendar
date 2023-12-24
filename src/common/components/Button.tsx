@@ -6,18 +6,27 @@ interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   handleClick?: () => void;
   disabled?: boolean;
   isLoading?: boolean;
+  type?: 'button' | 'submit' | 'reset';
 }
 
-const Button: React.FC<ButtonProps> = ({ className, handleClick, children, isLoading = false, ...restProps }) => {
+const Button: React.FC<ButtonProps> = ({
+  className,
+  type = 'button',
+  handleClick,
+  children,
+  isLoading = false,
+  ...restProps
+}) => {
   const defaultStyles = 'p-2 mx-2 cursor-pointerflex items-center justify-center';
   return (
     <button
-      {...restProps}
+      type={type}
       className={mergeClasses(
         defaultStyles, //defaault styles
         { 'cursor-not-allowed': isLoading }, // conditional styles
         className // passed via propes styles
       )}
+      {...restProps}
       onClick={handleClick}
     >
       {children}

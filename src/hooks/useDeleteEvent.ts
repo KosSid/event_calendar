@@ -4,7 +4,7 @@ import { deleteEventAPI } from '../services/apiEvents';
 
 export function useDeleteEvent() {
   const queryClient = useQueryClient();
-  const { mutate: deleteEvent } = useMutation({
+  const { mutate: deleteEvent, isPending } = useMutation({
     mutationFn: deleteEventAPI,
     onSuccess: () => {
       toast.success('Event successfully deleted');
@@ -14,5 +14,5 @@ export function useDeleteEvent() {
     onError: (err) => toast.error(err.message),
   });
 
-  return { deleteEvent };
+  return { deleteEvent, isPending };
 }
