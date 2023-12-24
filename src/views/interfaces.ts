@@ -24,3 +24,10 @@ export interface EventCalendarProps {
 export interface CurrentDateProps {
   currentDate: Date;
 }
+
+export interface EventDataFormInterface {
+  title: string;
+  content: string;
+  eventDate: string;
+  eventType: 'public' | 'custom';
+}

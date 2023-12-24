@@ -10,10 +10,6 @@ export interface EventDataInterface {
   eventType: 'public' | 'custom';
 }
 
-export interface CurrentDateProps {
-  currentDate: Date;
-}
-
 const initialFormState: EventDataInterface = {
   title: '',
   content: '',
@@ -21,7 +17,11 @@ const initialFormState: EventDataInterface = {
   eventType: 'custom',
 };
 
-const EventForm: React.FC<CurrentDateProps> = ({ currentDate }) => {
+export interface EventFormProps {
+  currentDate: Date;
+}
+
+const EventForm: React.FC<EventFormProps> = ({ currentDate }) => {
   const [formData, setFormData] = useState<EventDataInterface>(initialFormState);
   const { createEvent, isSuccess, isPending } = useCreateEvent();
 
@@ -44,7 +44,6 @@ const EventForm: React.FC<CurrentDateProps> = ({ currentDate }) => {
     e.preventDefault();
     const newFormData = { ...formData, eventDate: format(currentDate, 'yyyy-MM-dd') };
     createEvent(newFormData);
-    console.log(isSuccess);
   };
 
   return (
@@ -92,7 +91,7 @@ const EventForm: React.FC<CurrentDateProps> = ({ currentDate }) => {
         />
       </div>
       <div className="flex items-center justify-between">
-        <Button disabled={isPending} type="submit" className="bg-red-300 rounded mx-auto px-4 text-red-50">
+        <Button disabled={isPending} type="submit" className="bg-red-400 rounded mx-auto px-4 w-28 text-red-50">
           Submit
         </Button>
       </div>

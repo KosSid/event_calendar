@@ -7,14 +7,20 @@ import { useDeleteEvent } from '../../../hooks/useDeleteEvent';
 
 interface EventLiProps {
   event: EventInterface;
+  setIsFormVisible: React.Dispatch<React.SetStateAction<boolean>>;
+  isFormVisible: boolean;
 }
 
-const EventListItem: React.FC<EventLiProps> = ({ event }) => {
+const EventListItem: React.FC<EventLiProps> = ({ event, setIsFormVisible, isFormVisible }) => {
   const { title, content, eventType, id } = event;
-  const { deleteEvent, isPending } = useDeleteEvent();
+  const { deleteEvent, isDeleting } = useDeleteEvent();
 
   const handleDeleteEvent = () => {
     deleteEvent(id);
+  };
+
+  const handleEditEvent = () => {
+    setIsFormVisible(!isFormVisible);
   };
 
   return (
@@ -26,13 +32,13 @@ const EventListItem: React.FC<EventLiProps> = ({ event }) => {
       </p>
       <div className=" flex divide-x divide-red-100 absolute top-7 right-4">
         <Button
-          disabled={isPending}
+          handleClick={handleEditEvent}
           className="text-red-100 mx-0 rounded-l-lg bg-red-400 w-8 flex items-center justify-center"
         >
           <MdEdit />
         </Button>
         <Button
-          disabled={isPending}
+          disabled={isDeleting}
           handleClick={handleDeleteEvent}
           className="text-red-100 mx-0 rounded-r-lg bg-red-400 w-8 flex items-center justify-center"
         >

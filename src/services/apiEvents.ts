@@ -1,6 +1,6 @@
 import { formatISO } from 'date-fns';
 import supabase from './supabase';
-import { EventInterface, EventTypeAggregateInterface } from '../views/interfaces';
+import { EventInterface, EventTypeAggregateInterface, EventDataFormInterface } from '../views/interfaces';
 
 export async function getAllEventsAPI(): Promise<EventInterface[]> {
   const { data: events, error } = await supabase.from('events').select('*');
@@ -76,18 +76,21 @@ export async function getHolidayTypesBetweenDatesAPI(
   return eventsByDate;
 }
 
-export interface EventDataInterface {
-  title: string;
-  content: string;
-  eventDate: string;
-  eventType: 'public' | 'custom';
-}
-
-export async function createEventAPI(newEvent: EventDataInterface) {
+export async function createEventAPI(newEvent: EventDataFormInterface) {
   const response = await supabase.from('events').insert([newEvent]);
   const { data, error } = response;
   if (error) {
     throw new Error(`Error inserting event, check insertEvent supabase request: ${error.message}`);
+  }
+  return data;
+}
+
+export async function updateEventAPI(updateEvent: EventInterface) {
+  const { title, content, eventType, id } = updateEvent;
+  const response = await supabase.from('events').update({ title, content, eventType }).eq('id', id).select().single();
+  const { data, error } = response;
+  if (error) {
+    throw new Error(`Error updating event: ${error.message}`);
   }
   return data;
 }
