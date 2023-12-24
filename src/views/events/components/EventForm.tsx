@@ -47,7 +47,7 @@ const EventForm: React.FC<EventFormProps> = ({ currentDate }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="max-w-xl m-4 p-10 bg-red-100 rounded mx-auto">
+    <form onSubmit={handleSubmit} className="max-w-xl m-4 p-10 bg-blue-100 rounded mx-auto">
       <div className="mb-4">
         <label className="block text-gray-500 font-bold mb-2 text-base" htmlFor="title">
           Title
@@ -58,7 +58,7 @@ const EventForm: React.FC<EventFormProps> = ({ currentDate }) => {
           name="title"
           value={formData.title}
           onChange={handleChange}
-          className="border border-gray-200 rounded w-full py-2 px-3 text-gray-500 leading-normal focus:outline-none focus:border-red-200 focus:ring-1 focus:ring-red-200"
+          className="border border-gray-200 rounded w-full py-2 px-3 text-gray-500 leading-normal focus:outline-none focus:border-blue-200 focus:ring-1 focus:ring-blue-200"
           required
         />
       </div>
@@ -71,7 +71,7 @@ const EventForm: React.FC<EventFormProps> = ({ currentDate }) => {
           name="eventType"
           value={formData.eventType}
           onChange={handleChange}
-          className="border border-gray-200 rounded w-full py-2 px-3 text-gray-500 leading-normal focus:outline-none focus:border-red-200 focus:ring-1 focus:ring-red-200"
+          className="border border-gray-200 rounded w-full py-2 px-3 text-gray-500 leading-normal focus:outline-none focus:border-blue-200 focus:ring-1 focus:ring-blue-200"
         >
           <option value="public">Public</option>
           <option value="custom">Custom</option>
@@ -86,12 +86,12 @@ const EventForm: React.FC<EventFormProps> = ({ currentDate }) => {
           name="content"
           value={formData.content}
           onChange={handleChange}
-          className="border border-gray-200 rounded w-full py-2 px-3 text-gray-500 leading-normal focus:outline-none focus:border-red-200 focus:ring-1 focus:ring-red-200"
+          className="border border-gray-200 rounded w-full py-2 px-3 text-gray-500 leading-normal focus:outline-none focus:border-blue-200 focus:ring-1 focus:ring-blue-200"
           required
         />
       </div>
       <div className="flex items-center justify-between">
-        <Button disabled={isPending} type="submit" className="bg-red-400 rounded mx-auto px-4 w-28 text-red-50">
+        <Button disabled={isPending} type="submit" className="bg-blue-400 rounded mx-auto px-4 w-28 text-blue-50">
           Submit
         </Button>
       </div>

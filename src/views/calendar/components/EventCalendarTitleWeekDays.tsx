@@ -15,7 +15,7 @@ const EventCalendarTitleWeekDays: React.FC = () => {
         <div
           key={day}
           className={mergeClasses('text-gray-400 uppercase p-2 text-center text-xs sm:text-sm md:text-base', {
-            'text-red-200': weekDay === i,
+            'text-blue-200': weekDay === i,
           })}
         >
           {day}

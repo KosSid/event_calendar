@@ -26,21 +26,21 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
           <App />
         </BrowserRouter>
         <Toaster
-          position="top-center"
+          position="bottom-center"
           gutter={12}
           containerStyle={{ margin: '8px' }}
           toastOptions={{
             success: {
-              duration: 3000,
+              duration: 2000,
             },
             error: {
-              duration: 5000,
+              duration: 3000,
             },
             style: {
-              fontSize: '16px',
-              maxWidth: '500px',
-              padding: '16px 24px',
-              backgroundColor: '#fef2f2',
+              fontSize: '1rem',
+              maxWidth: '300px',
+              padding: '1rem 1.5rem',
+              backgroundColor: '#eff6ff',
               color: 'var(--color-grey-700)',
             },
           }}

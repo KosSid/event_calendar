@@ -18,19 +18,19 @@ const EventCalendarDay: React.FC<EventCalendarDayProps> = ({ day, currentDate, e
     <div
       onClick={() => handleClick(day)}
       className={clsx(
-        'border h-12 rounded-lg p-2 text-center text-xs sm:h-14 sm:text-sm md:text-base md:h-16 lg:h-20 lg:text-2xl hover:text-red-200 transition-all ease-linear duration-800 cursor-pointer flex flex-col items-center justify-center',
+        'border h-12 rounded-lg p-2 text-center text-xs sm:h-14 sm:text-sm md:text-base md:h-16 lg:h-20 lg:text-2xl hover:text-blue-200 transition-all ease-linear duration-800 cursor-pointer flex flex-col items-center justify-center',
         {
           'pointer-events-none text-gray-200': day < startDayOfMonth,
-          'text-red-200': format(day, 'yyyy-MM-dd') === format(currentDate, 'yyyy-MM-dd'),
-          'text-gray-400': day >= startDayOfMonth,
-          'bg-red-400 text-red-100 font-semibold': isToday(day),
+          'text-blue-200': format(day, 'yyyy-MM-dd') === format(currentDate, 'yyyy-MM-dd'),
+          'text-gray-400': day >= startDayOfMonth && !isToday(day),
+          'text-blue-50 bg-blue-300': isToday(day),
         }
       )}
     >
       <span>{format(day, 'd')}</span>
       <span className="flex">
-        {eventType?.public && <MdOutlineHolidayVillage />}
-        {eventType?.custom && <MdEventAvailable />}
+        {eventType?.public && <MdOutlineHolidayVillage className="text-xs sm:text-sm md:text-base lg:text-xl" />}
+        {eventType?.custom && <MdEventAvailable className="text-xs sm:text-sm md:text-base lg:text-xl" />}
       </span>
     </div>
   );

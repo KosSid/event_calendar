@@ -24,23 +24,23 @@ const EventListItem: React.FC<EventLiProps> = ({ event, setIsFormVisible, isForm
   };
 
   return (
-    <li className="p-3 mb-2 border-b-2 border-red-100 text-red-50 relative">
+    <li className="p-3 mb-2 border-b-2 border-blue-100 text-blue-50 relative">
       <h2 className="capitalize p-1 mb-1 text-sm sm:text-base md:text-xl">{title}</h2>
       <p className="text-sm sm:text-base p-1 ">
         <span className="capitalize font-semibold ">{`${eventType} holiday`}</span>
         <span>{`: ${content}`}</span>
       </p>
-      <div className=" flex divide-x divide-red-100 absolute top-7 right-4">
+      <div className=" flex divide-x divide-blue-100 absolute top-7 right-4">
         <Button
           handleClick={handleEditEvent}
-          className="text-red-100 mx-0 rounded-l-lg bg-red-400 w-8 flex items-center justify-center"
+          className="text-blue-100 mx-0 rounded-l-lg bg-blue-400 w-8 flex items-center justify-center"
         >
           <MdEdit />
         </Button>
         <Button
           disabled={isDeleting}
           handleClick={handleDeleteEvent}
-          className="text-red-100 mx-0 rounded-r-lg bg-red-400 w-8 flex items-center justify-center"
+          className="text-blue-100 mx-0 rounded-r-lg bg-blue-400 w-8 flex items-center justify-center"
         >
           <MdDeleteOutline />
         </Button>
