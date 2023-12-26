@@ -1,10 +1,10 @@
 export interface EventInterface {
-  id: number;
+  id?: number;
   title: string;
   content: string;
   eventDate: string;
   eventType: 'public' | 'custom';
-  createdAt: string;
+  createdAt?: string;
 }
 
 export interface EventDayTypeInterface {

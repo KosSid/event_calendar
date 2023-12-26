@@ -8,19 +8,21 @@ import { useDeleteEvent } from '../../../hooks/useDeleteEvent';
 interface EventLiProps {
   event: EventInterface;
   setIsFormVisible: React.Dispatch<React.SetStateAction<boolean>>;
-  isFormVisible: boolean;
+  setFormState: React.Dispatch<React.SetStateAction<EventInterface>>;
 }
 
-const EventListItem: React.FC<EventLiProps> = ({ event, setIsFormVisible, isFormVisible }) => {
+const EventListItem: React.FC<EventLiProps> = ({ event, setIsFormVisible, setFormState }) => {
   const { title, content, eventType, id } = event;
   const { deleteEvent, isDeleting } = useDeleteEvent();
 
   const handleDeleteEvent = () => {
-    deleteEvent(id);
+    if (id) deleteEvent(id);
   };
 
   const handleEditEvent = () => {
-    setIsFormVisible(!isFormVisible);
+    console.log(event);
+    setIsFormVisible((isFormVisible) => !isFormVisible);
+    setFormState({ ...event, title, content, eventType });
   };
 
   return (

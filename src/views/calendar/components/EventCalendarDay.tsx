@@ -21,7 +21,7 @@ const EventCalendarDay: React.FC<EventCalendarDayProps> = ({ day, currentDate, e
         'border h-12 rounded-lg p-2 text-center text-xs sm:h-14 sm:text-sm md:text-base md:h-16 lg:h-20 lg:text-2xl hover:text-blue-200 transition-all ease-linear duration-800 cursor-pointer flex flex-col items-center justify-center',
         {
           'pointer-events-none text-gray-200': day < startDayOfMonth,
-          'text-blue-200': format(day, 'yyyy-MM-dd') === format(currentDate, 'yyyy-MM-dd'),
+          'text-blue-400': format(day, 'yyyy-MM-dd') === format(currentDate, 'yyyy-MM-dd'),
           'text-gray-400': day >= startDayOfMonth && !isToday(day),
           'text-blue-50 bg-blue-300': isToday(day),
         }

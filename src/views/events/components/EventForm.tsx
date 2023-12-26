@@ -2,35 +2,29 @@ import React, { useState, useEffect } from 'react';
 import { format } from 'date-fns';
 import { useCreateEvent } from '../../../hooks/useCreateEvent';
 import Button from '../../../common/components/Button';
-
-export interface EventDataInterface {
-  title: string;
-  content: string;
-  eventDate: string;
-  eventType: 'public' | 'custom';
-}
-
-const initialFormState: EventDataInterface = {
-  title: '',
-  content: '',
-  eventDate: '',
-  eventType: 'custom',
-};
+import { EventInterface } from '../../interfaces';
 
 export interface EventFormProps {
   currentDate: Date;
+  handleShowEventForm: () => void;
+  formState: EventInterface;
 }
 
-const EventForm: React.FC<EventFormProps> = ({ currentDate }) => {
-  const [formData, setFormData] = useState<EventDataInterface>(initialFormState);
+const EventForm: React.FC<EventFormProps> = ({ currentDate, handleShowEventForm, formState: initialFormState }) => {
+  const [formData, setFormData] = useState<EventInterface>(initialFormState);
   const { createEvent, isSuccess, isPending } = useCreateEvent();
+  console.log(initialFormState);
+
+  useEffect(() => {
+    setFormData(initialFormState);
+  }, [initialFormState]);
 
   useEffect(() => {
     if (isSuccess) {
       setFormData(initialFormState);
-      console.log('Event created successfully');
+      handleShowEventForm();
     }
-  }, [isSuccess]);
+  }, [isSuccess, handleShowEventForm, initialFormState]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;

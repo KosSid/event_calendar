@@ -9,6 +9,9 @@ export default {
       fontFamily: {
         sans: ['Roboto', 'sans-serif'],
       },
+      maxHeight: {
+        '500px': '500px',
+      },
     },
   },
   plugins: [forms],
