@@ -1,92 +1,115 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { useForm, SubmitHandler } from 'react-hook-form';
 import { format } from 'date-fns';
-import { useCreateEvent } from '../../../hooks/useCreateEvent';
-import Button from '../../../common/components/Button';
 import { EventInterface } from '../../interfaces';
+import Button from '../../../common/components/Button';
+import ErrorFormMessage from './ErrorFormMessage';
+import { MdOutlineCancel } from 'react-icons/md';
+import { useCreateEvent } from '../../../hooks/useCreateEvent';
+import { useEpdateEvent } from '../../../hooks/useUpdateEvent';
+import { useGetDateFromUrl } from '../../../hooks/useGetDateFromUrl';
 
-export interface EventFormProps {
-  currentDate: Date;
-  handleShowEventForm: () => void;
-  formState: EventInterface;
+interface EventFormProps {
+  editFormInitialState?: EventInterface;
 }
 
-const EventForm: React.FC<EventFormProps> = ({ currentDate, handleShowEventForm, formState: initialFormState }) => {
-  const [formData, setFormData] = useState<EventInterface>(initialFormState);
-  const { createEvent, isSuccess, isPending } = useCreateEvent();
-  console.log(initialFormState);
+const createEventDefaultFormValues: EventInterface = {
+  title: '',
+  eventType: 'custom',
+  content: '',
+  eventDate: '',
+};
+
+const EventForm: React.FC<EventFormProps> = ({ editFormInitialState }) => {
+  const date = useGetDateFromUrl() || new Date();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<EventInterface>({
+    defaultValues: editFormInitialState ? editFormInitialState : createEventDefaultFormValues,
+  });
+
+  const { createEvent, isCreated, isCreating } = useCreateEvent();
+  const { updateEvent, isUpdated, isUpdating } = useEpdateEvent();
 
   useEffect(() => {
-    setFormData(initialFormState);
-  }, [initialFormState]);
-
-  useEffect(() => {
-    if (isSuccess) {
-      setFormData(initialFormState);
-      handleShowEventForm();
+    if (isCreated || isUpdated) {
+      reset(createEventDefaultFormValues);
     }
-  }, [isSuccess, handleShowEventForm, initialFormState]);
+  }, [isCreated, reset, isUpdated]);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value } = e.target;
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      [name]: value,
-    }));
+  const handleFormSubmit: SubmitHandler<EventInterface> = (formData) => {
+    if (editFormInitialState) {
+      updateEvent(formData);
+    } else {
+      const formDataToSubmit = { ...formData, eventDate: format(date, 'yyyy-MM-dd') };
+      createEvent(formDataToSubmit);
+    }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    const newFormData = { ...formData, eventDate: format(currentDate, 'yyyy-MM-dd') };
-    createEvent(newFormData);
+  const handleFormClose: () => void = () => {
+    reset(createEventDefaultFormValues);
   };
 
   return (
-    <form onSubmit={handleSubmit} className="max-w-xl m-4 p-10 bg-blue-100 rounded mx-auto">
-      <div className="mb-4">
+    <form onSubmit={handleSubmit(handleFormSubmit)} className="max-w-xl m-4 p-10 bg-blue-100 rounded mx-auto relative">
+      <Button
+        type="button"
+        handleClick={handleFormClose}
+        className="absolute rounded w-fit text-gray-500 top-3 right-3 font-bold text-3xl"
+      >
+        <MdOutlineCancel />
+      </Button>
+      <div className="mb-6 relative">
         <label className="block text-gray-500 font-bold mb-2 text-base" htmlFor="title">
           Title
         </label>
         <input
           type="text"
           id="title"
-          name="title"
-          value={formData.title}
-          onChange={handleChange}
+          {...register('title', {
+            required: 'This is required field',
+          })}
           className="border border-gray-200 rounded w-full py-2 px-3 text-gray-500 leading-normal focus:outline-none focus:border-blue-200 focus:ring-1 focus:ring-blue-200"
-          required
         />
+        {errors && errors?.title && <ErrorFormMessage message={errors?.title.message} />}
       </div>
-      <div className="mb-4">
+      <div className="mb-6">
         <label className="block text-gray-500 text-base font-bold mb-2" htmlFor="eventType">
           Event Type
         </label>
         <select
           id="eventType"
-          name="eventType"
-          value={formData.eventType}
-          onChange={handleChange}
+          {...register('eventType')}
           className="border border-gray-200 rounded w-full py-2 px-3 text-gray-500 leading-normal focus:outline-none focus:border-blue-200 focus:ring-1 focus:ring-blue-200"
         >
-          <option value="public">Public</option>
           <option value="custom">Custom</option>
+          <option value="public">Public</option>
         </select>
       </div>
-      <div className="mb-6">
+      <div className="mb-6 relative">
         <label className="block text-gray-500 text-base font-bold mb-2" htmlFor="content">
           Content
         </label>
         <textarea
           id="content"
-          name="content"
-          value={formData.content}
-          onChange={handleChange}
+          {...register('content', {
+            required: 'This is required field',
+            minLength: { value: 10, message: 'This field must have at least 10 characters' },
+          })}
           className="border border-gray-200 rounded w-full py-2 px-3 text-gray-500 leading-normal focus:outline-none focus:border-blue-200 focus:ring-1 focus:ring-blue-200"
-          required
         />
+        {errors && errors?.content && <ErrorFormMessage className="-bottom-3" message={errors?.content.message} />}
       </div>
-      <div className="flex items-center justify-between">
-        <Button disabled={isPending} type="submit" className="bg-blue-400 rounded mx-auto px-4 w-28 text-blue-50">
-          Submit
+      <div className="text-center">
+        <Button
+          disabled={isUpdating || isCreating}
+          type="submit"
+          className="bg-blue-400 rounded mx-auto px-4 w-32 text-blue-50"
+        >
+          {editFormInitialState ? 'Edit Event' : 'Create Event'}
         </Button>
       </div>
     </form>

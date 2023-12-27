@@ -4,16 +4,13 @@ import ErrorComponent from '../../../common/components/ErrorComponent';
 import EmptyEvents from '../components/EmptyEvents';
 import EventListItem from '../components/EventListItem';
 import useFetchEventsOnDate from '../../../hooks/useFetchEventsOnDate';
-import { EventInterface } from '../../interfaces';
 import { mergeClasses } from '../../../utils/mergeClasses';
 
 interface EventsListProps {
   currentDate: Date;
-  setIsFormVisible: React.Dispatch<React.SetStateAction<boolean>>;
-  setFormState: React.Dispatch<React.SetStateAction<EventInterface>>;
 }
 
-const EventsList: React.FC<EventsListProps> = ({ currentDate, setIsFormVisible, setFormState }) => {
+const EventsList: React.FC<EventsListProps> = ({ currentDate }) => {
   const { data: events, isLoading, error } = useFetchEventsOnDate(currentDate);
 
   if (isLoading) return <Loading />;
@@ -21,12 +18,10 @@ const EventsList: React.FC<EventsListProps> = ({ currentDate, setIsFormVisible, 
   if (events?.length === 0) return <EmptyEvents currentDate={currentDate} />;
   return (
     <ul
-      className={mergeClasses('mt-6', { 'lg:overflow-y-scroll': events && events?.length > 6 })}
-      style={events && events?.length > 6 ? { maxHeight: '70vh' } : {}}
+      className={mergeClasses('mt-6', { 'lg:overflow-y-auto': events && events?.length > 4 })}
+      style={events && events?.length > 4 ? { maxHeight: '70vh' } : {}}
     >
-      {events?.map((event) => (
-        <EventListItem setIsFormVisible={setIsFormVisible} key={event.id} event={event} setFormState={setFormState} />
-      ))}
+      {events?.map((event) => <EventListItem key={event.id} event={event} />)}
     </ul>
   );
 };

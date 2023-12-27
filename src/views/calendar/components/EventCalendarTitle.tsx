@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { formatDateToYearMonthDayObj } from '../../../utils/formatDateToYearMonthDayObj';
-import { format, isSameMonth, sub, add } from 'date-fns';
+import { format, sub, add, isToday } from 'date-fns';
 import { GoChevronRight } from 'react-icons/go';
 import { GoChevronLeft } from 'react-icons/go';
 import { CgToday } from 'react-icons/cg';
@@ -14,7 +14,7 @@ interface EventCalendarTitleProps {
 
 const EventCalendarTitle: React.FC<EventCalendarTitleProps> = ({ currentDate, setCurrentDate }) => {
   const [, setSearchParams] = useSearchParams();
-  const isCurrentMonth = isSameMonth(new Date(), currentDate);
+  const today = isToday(currentDate);
 
   function handleClick(direction: 'forward' | 'backward' | 'today') {
     let newDate: Date = new Date();
@@ -28,7 +28,7 @@ const EventCalendarTitle: React.FC<EventCalendarTitleProps> = ({ currentDate, se
 
   return (
     <div className="relative pt-2 flex flex-row items-center justify-end mb-6 lg:mb-20 lg:pt-6">
-      {!isCurrentMonth && (
+      {!today && (
         <Button className="flex rounded-lg mr-2" handleClick={() => handleClick('today')}>
           <span className="mr-1 uppercase text-xs text-gray-400">Today</span>
           <CgToday className="text-gray-400" />

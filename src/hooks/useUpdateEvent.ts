@@ -5,17 +5,17 @@ import { updateEventAPI } from '../services/apiEvents';
 export function useEpdateEvent() {
   const queryClient = useQueryClient();
   const {
-    mutate: editEvent,
-    isSuccess,
+    mutate: updateEvent,
+    isSuccess: isUpdated,
     isPending: isUpdating,
   } = useMutation({
     mutationFn: updateEventAPI,
     onSuccess: () => {
-      toast.success('New event successfully created');
+      toast.success('Event successfully updated');
       queryClient.invalidateQueries({ queryKey: ['fetchEventsOnDate'] });
       queryClient.invalidateQueries({ queryKey: ['fetchHolidayTypesBetweenDates'] });
     },
     onError: (err) => toast.error(err.message),
   });
-  return { isSuccess, editEvent, isUpdating };
+  return { isUpdated, updateEvent, isUpdating };
 }

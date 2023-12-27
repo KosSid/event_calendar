@@ -6,8 +6,8 @@ export function useCreateEvent() {
   const queryClient = useQueryClient();
   const {
     mutate: createEvent,
-    isSuccess,
-    isPending,
+    isSuccess: isCreated,
+    isPending: isCreating,
   } = useMutation({
     mutationFn: createEventAPI,
     onSuccess: () => {
@@ -17,5 +17,5 @@ export function useCreateEvent() {
     },
     onError: (err) => toast.error(err.message),
   });
-  return { isSuccess, createEvent, isPending };
+  return { isCreated, createEvent, isCreating };
 }

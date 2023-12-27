@@ -1,29 +1,27 @@
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 import { EventInterface } from '../../interfaces';
 import Button from '../../../common/components/Button';
 import { MdDeleteOutline } from 'react-icons/md';
 import { MdEdit } from 'react-icons/md';
 import { useDeleteEvent } from '../../../hooks/useDeleteEvent';
+import EventForm from './EventForm';
 
 interface EventLiProps {
   event: EventInterface;
-  setIsFormVisible: React.Dispatch<React.SetStateAction<boolean>>;
-  setFormState: React.Dispatch<React.SetStateAction<EventInterface>>;
 }
 
-const EventListItem: React.FC<EventLiProps> = ({ event, setIsFormVisible, setFormState }) => {
+const EventListItem: React.FC<EventLiProps> = ({ event }) => {
   const { title, content, eventType, id } = event;
   const { deleteEvent, isDeleting } = useDeleteEvent();
+  const [isFormVisible, setIsFormVisible] = useState(false);
 
   const handleDeleteEvent = () => {
     if (id) deleteEvent(id);
   };
 
-  const handleEditEvent = () => {
-    console.log(event);
-    setIsFormVisible((isFormVisible) => !isFormVisible);
-    setFormState({ ...event, title, content, eventType });
-  };
+  const handleEditEvent = useCallback(() => {
+    setIsFormVisible(!isFormVisible);
+  }, [isFormVisible]);
 
   return (
     <li className="p-3 mb-2 border-b-2 border-blue-100 text-blue-50 relative">
@@ -47,6 +45,7 @@ const EventListItem: React.FC<EventLiProps> = ({ event, setIsFormVisible, setFor
           <MdDeleteOutline />
         </Button>
       </div>
+      {isFormVisible && <EventForm editFormInitialState={event} />}
     </li>
   );
 };
