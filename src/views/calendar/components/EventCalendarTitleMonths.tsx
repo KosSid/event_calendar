@@ -1,4 +1,4 @@
-import React from 'react';
+import { FC } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { mergeClasses } from '../../../utils/mergeClasses';
 import { getMonth, isValid, endOfMonth } from 'date-fns';
@@ -8,7 +8,7 @@ import { EventCalendarProps } from '../../interfaces';
 
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
-const EventCalendarTitleMonths: React.FC<EventCalendarProps> = ({ setCurrentDate, currentDate }) => {
+const EventCalendarTitleMonths: FC<EventCalendarProps> = ({ setCurrentDate, currentDate }) => {
   const [, setSearchParams] = useSearchParams();
   const monthOfYear = getMonth(currentDate);
 

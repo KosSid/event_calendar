@@ -1,14 +1,14 @@
-import React from 'react';
+import { FC } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import EventCalendar from './pages/EventCalendar';
-import CompoundCounter from './pages/Counter';
+import CompoundCounter2 from './pages/Counter2';
 
-const App: React.FC = () => {
+const App: FC = () => {
   return (
     <Routes>
       <Route index element={<Navigate to="/calendar" />} />
       <Route path="/calendar" element={<EventCalendar />} />
-      <Route path="/counter" element={<CompoundCounter />} />
+      <Route path="/counter" element={<CompoundCounter2 />} />
     </Routes>
   );
 };

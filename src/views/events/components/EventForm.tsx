@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { FC, useEffect } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { format } from 'date-fns';
 import { EventInterface } from '../../interfaces';
@@ -20,7 +20,7 @@ const createEventDefaultFormValues: EventInterface = {
   eventDate: '',
 };
 
-const EventForm: React.FC<EventFormProps> = ({ editFormInitialState, modalClose }) => {
+const EventForm: FC<EventFormProps> = ({ editFormInitialState, modalClose }) => {
   const date = useGetDateFromUrl() || new Date();
   const {
     register,

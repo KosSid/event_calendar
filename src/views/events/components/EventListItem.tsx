@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import { FC, useCallback, useState } from 'react';
 import { EventInterface } from '../../interfaces';
 import Button from '../../../common/components/Button';
 import { MdDeleteOutline } from 'react-icons/md';
@@ -10,7 +10,7 @@ interface EventLiProps {
   event: EventInterface;
 }
 
-const EventListItem: React.FC<EventLiProps> = ({ event }) => {
+const EventListItem: FC<EventLiProps> = ({ event }) => {
   const { title, content, eventType, id } = event;
   const { deleteEvent, isDeleting } = useDeleteEvent();
   const [isFormVisible, setIsFormVisible] = useState(false);

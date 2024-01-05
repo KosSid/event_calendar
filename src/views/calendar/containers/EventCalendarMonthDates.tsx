@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import { FC, useMemo } from 'react';
 import { startOfMonth, endOfMonth, getDay, eachDayOfInterval, subDays, formatISO } from 'date-fns';
 import EventCalendarDay from '../components/EventCalendarDay';
 import Loading from '../../../common/components/Loading';
@@ -8,7 +8,7 @@ import { useSearchParams } from 'react-router-dom';
 import { formatDateToYearMonthDayObj } from '../../../utils/formatDateToYearMonthDayObj';
 import useFetchHolidayTypes from '../../../hooks/useFetchHolidayTypes';
 
-const EventCalendarMonthDates: React.FC<EventCalendarProps> = ({ currentDate, setCurrentDate }) => {
+const EventCalendarMonthDates: FC<EventCalendarProps> = ({ currentDate, setCurrentDate }) => {
   const [, setSearchParams] = useSearchParams();
   const { data: eventTypeObj, isLoading, error } = useFetchHolidayTypes(currentDate);
 

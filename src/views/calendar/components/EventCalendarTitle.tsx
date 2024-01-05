@@ -1,4 +1,4 @@
-import React from 'react';
+import { FC } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { formatDateToYearMonthDayObj } from '../../../utils/formatDateToYearMonthDayObj';
 import { format, sub, add, isToday } from 'date-fns';
@@ -12,7 +12,7 @@ interface EventCalendarTitleProps {
   setCurrentDate: React.Dispatch<React.SetStateAction<Date>>;
 }
 
-const EventCalendarTitle: React.FC<EventCalendarTitleProps> = ({ currentDate, setCurrentDate }) => {
+const EventCalendarTitle: FC<EventCalendarTitleProps> = ({ currentDate, setCurrentDate }) => {
   const [, setSearchParams] = useSearchParams();
   const today = isToday(currentDate);
 

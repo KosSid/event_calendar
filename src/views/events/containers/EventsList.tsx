@@ -1,4 +1,4 @@
-import React from 'react';
+import { FC } from 'react';
 import Loading from '../../../common/components/Loading';
 import ErrorComponent from '../../../common/components/ErrorComponent';
 import EmptyEvents from '../components/EmptyEvents';
@@ -10,7 +10,7 @@ interface EventsListProps {
   currentDate: Date;
 }
 
-const EventsList: React.FC<EventsListProps> = ({ currentDate }) => {
+const EventsList: FC<EventsListProps> = ({ currentDate }) => {
   const { data: events, isLoading, error } = useFetchEventsOnDate(currentDate);
 
   if (isLoading) return <Loading />;

@@ -1,9 +1,9 @@
-import React, { useCallback, useState } from 'react';
+import { FC, useCallback, useState } from 'react';
 import Button from '../../../common/components/Button';
 import EventForm from './EventForm';
 import ModalWindow from '../../../common/components/ModalWindow';
 
-const AddEvent: React.FC = () => {
+const AddEvent: FC = () => {
   const [isModalOpen, setisModalOpen] = useState(false);
 
   const handleShowEventForm = useCallback(() => {

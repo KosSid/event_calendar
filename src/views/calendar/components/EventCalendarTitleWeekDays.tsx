@@ -1,11 +1,11 @@
-import React from 'react';
+import { FC } from 'react';
 import { mergeClasses } from '../../../utils/mergeClasses';
 import { useGetDateFromUrl } from '../../../hooks/useGetDateFromUrl';
 import { getDay } from 'date-fns';
 
 const WEEKDAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
-const EventCalendarTitleWeekDays: React.FC = () => {
+const EventCalendarTitleWeekDays: FC = () => {
   const date = useGetDateFromUrl() || new Date();
   const weekDay = getDay(date);
 

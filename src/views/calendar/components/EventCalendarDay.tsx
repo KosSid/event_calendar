@@ -1,4 +1,4 @@
-import React from 'react';
+import { FC } from 'react';
 import { EventDayTypeInterface } from '../../interfaces';
 import { format, isToday, startOfMonth } from 'date-fns';
 import { MdOutlineHolidayVillage } from 'react-icons/md';
@@ -12,7 +12,7 @@ interface EventCalendarDayProps {
   handleClick: (day: Date) => void;
 }
 
-const EventCalendarDay: React.FC<EventCalendarDayProps> = ({ day, currentDate, eventType, handleClick }) => {
+const EventCalendarDay: FC<EventCalendarDayProps> = ({ day, currentDate, eventType, handleClick }) => {
   const startDayOfMonth = startOfMonth(currentDate);
   return (
     <div

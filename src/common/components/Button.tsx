@@ -1,15 +1,14 @@
-import React from 'react';
+import { FC, HTMLAttributes } from 'react';
 import { mergeClasses } from '../../utils/mergeClasses';
 
-interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
-  children: React.ReactNode;
+interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
   handleClick?: () => void;
   disabled?: boolean;
   isLoading?: boolean;
   type?: 'button' | 'submit' | 'reset';
 }
 
-const Button: React.FC<ButtonProps> = ({
+const Button: FC<ButtonProps> = ({
   className,
   type = 'button',
   handleClick,

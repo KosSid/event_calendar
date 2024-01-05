@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import { FC, useCallback, useState } from 'react';
 import EventsList from './containers/EventsList';
 import { CurrentDateProps } from '../interfaces';
 import EventsListTitle from './components/EventsListTitle';
@@ -6,7 +6,7 @@ import Button from '../../common/components/Button';
 import { mergeClasses } from '../../utils/mergeClasses';
 import EventForm from './components/EventForm';
 
-const Eventsv1: React.FC<CurrentDateProps> = ({ currentDate }) => {
+const Eventsv1: FC<CurrentDateProps> = ({ currentDate }) => {
   const [isFormVisible, setIsFormVisible] = useState(false);
 
   const handleShowEventForm = useCallback(() => {

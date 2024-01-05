@@ -1,4 +1,4 @@
-import { useState, createContext, useContext, FC, ReactNode } from 'react';
+import { useState, createContext, useContext, FC, ReactNode, PropsWithChildren } from 'react';
 
 // Define types for the context
 interface CounterContextType {
@@ -10,13 +10,8 @@ interface CounterContextType {
 // 1. Create Context with a default value
 const CounterContext = createContext<CounterContextType | null>(null);
 
-// Define types for the Counter component props
-interface CounterProps {
-  children: ReactNode;
-}
-
-// Extend the FC type to include the child components as static properties
-interface CounterComponent extends FC<CounterProps> {
+// Define types for the Counter component props and Extend Counter component type to include static properties Count Label
+interface CounterProps extends FC<PropsWithChildren> {
   Count: FC;
   Label: FC<LabelProps>;
   Increase: FC<ButtonProps>;
@@ -24,7 +19,7 @@ interface CounterComponent extends FC<CounterProps> {
 }
 
 // 2. Create parent component
-const Counter: CounterComponent = ({ children }) => {
+const Counter: CounterProps = ({ children }) => {
   const [count, setCount] = useState(0);
   const increase = () => setCount((count) => count + 1);
   const decrease = () => setCount((count) => count - 1);

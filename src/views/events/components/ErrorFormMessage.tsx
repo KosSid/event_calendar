@@ -1,4 +1,4 @@
-import React from 'react';
+import { FC } from 'react';
 import { mergeClasses } from '../../../utils/mergeClasses';
 
 interface ErrorFormMessageProps {
@@ -6,7 +6,7 @@ interface ErrorFormMessageProps {
   className?: string;
 }
 
-const ErrorFormMessage: React.FC<ErrorFormMessageProps> = ({ message, className }) => {
+const ErrorFormMessage: FC<ErrorFormMessageProps> = ({ message, className }) => {
   return <p className={mergeClasses('text-red-300 absolute -bottom-5 left-0 text-xs', className)}>{message}</p>;
 };
 

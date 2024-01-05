@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import { FC, useState, useEffect } from 'react';
 import { useGetDateFromUrl } from '../hooks/useGetDateFromUrl';
 import { useSearchParams } from 'react-router-dom';
 import { formatDateToYearMonthDayObj } from '../utils/formatDateToYearMonthDayObj';
 import Calendar from '../views/calendar/Calendar';
 import Events from '../views/events/Events';
 
-const EventCalendar: React.FC = () => {
+const EventCalendar: FC = () => {
   const date = useGetDateFromUrl() || new Date();
   const [currentDate, setCurrentDate] = useState<Date>(date);
   const [, setSearchParams] = useSearchParams();
@@ -17,6 +17,7 @@ const EventCalendar: React.FC = () => {
 
   return (
     <div className="mx-auto min-w-96 lg:flex min-h-screen">
+      <div id="modal-root"></div>
       <Calendar currentDate={currentDate} setCurrentDate={setCurrentDate} />
       <Events currentDate={currentDate} />
     </div>
