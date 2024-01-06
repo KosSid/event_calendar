@@ -56,7 +56,7 @@ const EventForm: FC<EventFormProps> = ({ editFormInitialState, modalClose }) => 
   };
 
   return (
-    <form onSubmit={handleSubmit(handleFormSubmit)} className="max-w-xl m-4 p-10 bg-blue-100 rounded mx-auto relative">
+    <form onSubmit={handleSubmit(handleFormSubmit)} className="md:w-500px p-3 bg-blue-100 rounded mx-auto relative">
       <div className="mb-6 relative">
         <label className="block text-gray-500 font-bold mb-2 text-base" htmlFor="title">
           Title
@@ -98,20 +98,12 @@ const EventForm: FC<EventFormProps> = ({ editFormInitialState, modalClose }) => 
         />
         {errors && errors?.content && <ErrorFormMessage className="-bottom-3" message={errors?.content.message} />}
       </div>
-      <div className="flex flex-wrap gap-3 justify-center">
-        <Button
-          disabled={isUpdating || isCreating}
-          type="submit"
-          className="bg-blue-400 rounded  px-4 w-32 text-blue-50 hover:bg-blue-500 active:scale-95 transition-all ease-in"
-        >
-          {editFormInitialState ? 'Edit Event' : 'Create Event'}
-        </Button>
-        <Button
-          type="reset"
-          handleClick={handleFormClose}
-          className="bg-blue-400 rounded mx-auto px-4 w-32 text-blue-50 hover:bg-blue-500 active:scale-95 transition-all ease-in"
-        >
+      <div className="flex flex-wrap gap-2 justify-center">
+        <Button type="reset" handleClick={handleFormClose} variant="secondary">
           Cancel
+        </Button>
+        <Button disabled={isUpdating || isCreating} type="submit" variant="primary">
+          {editFormInitialState ? 'Edit Event' : 'Create Event'}
         </Button>
       </div>
     </form>

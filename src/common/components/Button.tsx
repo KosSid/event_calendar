@@ -6,6 +6,7 @@ interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
   disabled?: boolean;
   isLoading?: boolean;
   type?: 'button' | 'submit' | 'reset';
+  variant?: 'primary' | 'secondary' | 'delete';
 }
 
 const Button: FC<ButtonProps> = ({
@@ -14,13 +15,26 @@ const Button: FC<ButtonProps> = ({
   handleClick,
   children,
   isLoading = false,
+  variant = 'no-styles',
   ...restProps
 }) => {
+  const defaultButtonStyle = 'p-2 mx-2 cursor-pointerflex items-center justify-center';
+  let variantStyles = '';
+  if (variant === 'primary')
+    variantStyles = 'bg-blue-400 rounded px-4 w-32 text-stone-50  active:scale-95 transition-all ease-in';
+
+  if (variant === 'secondary')
+    variantStyles = 'border-2 border-blue-500 rounded px-4 w-32 text-blue-600 active:scale-95 transition-all ease-in';
+
+  if (variant === 'delete')
+    variantStyles = 'bg-red-500 rounded px-4 w-32 text-stone-50 active:scale-95 transition-all ease-in';
+
   return (
     <button
       type={type}
       className={mergeClasses(
-        'p-2 mx-2 cursor-pointerflex items-center justify-center', //defaault styles
+        defaultButtonStyle,
+        variantStyles,
         { 'cursor-not-allowed': isLoading }, // conditional styles
         className // passed via propes styles
       )}

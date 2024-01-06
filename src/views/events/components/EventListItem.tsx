@@ -3,9 +3,10 @@ import { EventInterface } from '../../interfaces';
 import Button from '../../../common/components/Button';
 import { MdDeleteOutline } from 'react-icons/md';
 import { MdEdit } from 'react-icons/md';
-import { useDeleteEvent } from '../../../hooks/useDeleteEvent';
 import EventForm from './EventForm';
 import Modal from '../../../common/components/modal/Modal';
+import DeletePopup from '../../../common/components/DeletePopup';
+import { useDeleteEvent } from '../../../hooks/useDeleteEvent';
 
 interface EventLiProps {
   event: EventInterface;
@@ -26,24 +27,27 @@ const EventListItem: FC<EventLiProps> = ({ event }) => {
         <span className="capitalize font-semibold ">{`${eventType} holiday`}</span>
         <span>{`: ${content}`}</span>
       </p>
-      <div className=" flex divide-x divide-blue-100 absolute top-7 right-4">
+      <div className="flex absolute top-0 right-4">
         <Modal>
           <Modal.Open modalWindowNameToOpen="editForm">
-            <Button className="text-blue-100 mx-0 rounded-l-lg bg-blue-400 w-8 flex items-center justify-center">
-              <MdEdit />
+            <Button className="text-stone-50 mx-0 flex items-center justify-center">
+              <MdEdit className="text-xl" />
             </Button>
           </Modal.Open>
           <Modal.Window modalWindowNameToOpen="editForm">
             <EventForm editFormInitialState={event} />
           </Modal.Window>
         </Modal>
-        <Button
-          disabled={isDeleting}
-          handleClick={handleDeleteEvent}
-          className="text-blue-100 mx-0 rounded-r-lg bg-blue-400 w-8 flex items-center justify-center"
-        >
-          <MdDeleteOutline />
-        </Button>
+        <Modal>
+          <Modal.Open modalWindowNameToOpen="deleteForm">
+            <Button className="text-sone-50 mx-0 flex items-center justify-center">
+              <MdDeleteOutline className="text-xl" />
+            </Button>
+          </Modal.Open>
+          <Modal.Window modalWindowNameToOpen="deleteForm">
+            <DeletePopup onDelete={handleDeleteEvent} isDeleting={isDeleting} title="event" />
+          </Modal.Window>
+        </Modal>
       </div>
     </li>
   );

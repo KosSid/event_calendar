@@ -10,6 +10,12 @@ export default {
       maxHeight: {
         '500px': '500px',
       },
+      maxWidth: {
+        '500px': '500px',
+      },
+      width: {
+        '500px': '500px',
+      },
     },
   },
 };
