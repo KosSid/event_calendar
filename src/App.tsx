@@ -1,11 +1,11 @@
-import React from 'react';
+import { FC } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import EventCalendar from './views/eventCalendar/EventCalendar';
+import EventCalendar from './pages/EventCalendar';
 
-const App: React.FC = () => {
+const App: FC = () => {
   return (
     <Routes>
-      <Route path="/" element={<Navigate to="/calendar" />} />
+      <Route index element={<Navigate to="/calendar" />} />
       <Route path="/calendar" element={<EventCalendar />} />
     </Routes>
   );
