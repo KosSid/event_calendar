@@ -16,7 +16,7 @@ const EventCalendar: FC = () => {
   }, []);
 
   return (
-    <div className="mx-auto min-w-96 lg:flex min-h-screen">
+    <div className="mx-auto min-w-96 lg:flex h-screen">
       <div id="modal-root"></div>
       <Calendar currentDate={currentDate} setCurrentDate={setCurrentDate} />
       <Events currentDate={currentDate} />

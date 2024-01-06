@@ -7,7 +7,7 @@ import EventCalendarMonthDates from './containers/EventCalendarMonthDates';
 
 const Calendar: FC<EventCalendarProps> = ({ currentDate, setCurrentDate }) => {
   return (
-    <div className="px-3 pt-4 pb-2 min-h-3/5 lg:w-3/5 lg:order-2 lg:min-h-screen lg:px-6 flex justify-center items-start">
+    <div className="px-3 pt-4 pb-2 min-h-3/5 lg:w-3/5 lg:order-2 lg:min-h-screen lg:px-6 flex justify-center items-center lg:items-start">
       <div className="container max-w-4xl">
         <EventCalendarTitle currentDate={currentDate} setCurrentDate={setCurrentDate} />
         <EventCalendarTitleMonths currentDate={currentDate} setCurrentDate={setCurrentDate} />
