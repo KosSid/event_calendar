@@ -56,23 +56,27 @@ const EventForm: FC<EventFormProps> = ({ editFormInitialState, modalClose }) => 
   };
 
   return (
-    <form onSubmit={handleSubmit(handleFormSubmit)} className="md:w-500px p-3 bg-blue-100 rounded mx-auto relative">
+    <form
+      onSubmit={handleSubmit(handleFormSubmit)}
+      className="p-3 w-64 sm:w-400px md:w-600px md:p-6 bg-blue-100 rounded mx-auto relative"
+    >
       <div className="mb-6 relative">
-        <label className="block text-gray-500 font-bold mb-2 text-base" htmlFor="title">
-          Title
+        <label className="block text-gray-500 font-semibold mb-2 text-base" htmlFor="title">
+          Event Name
         </label>
         <input
           type="text"
           id="title"
           {...register('title', {
             required: 'This is required field',
+            maxLength: { value: 50, message: 'Title should be no more than 50 characters.' },
           })}
           className="border border-gray-200 rounded w-full py-2 px-3 text-gray-500 leading-normal focus:outline-none focus:border-blue-200 focus:ring-1 focus:ring-blue-200"
         />
         {errors && errors?.title && <ErrorFormMessage message={errors?.title.message} />}
       </div>
       <div className="mb-6">
-        <label className="block text-gray-500 text-base font-bold mb-2" htmlFor="eventType">
+        <label className="block text-gray-500 text-base font-semibold mb-2" htmlFor="eventType">
           Event Type
         </label>
         <select
@@ -85,14 +89,15 @@ const EventForm: FC<EventFormProps> = ({ editFormInitialState, modalClose }) => 
         </select>
       </div>
       <div className="mb-6 relative">
-        <label className="block text-gray-500 text-base font-bold mb-2" htmlFor="content">
-          Content
+        <label className="block text-gray-500 text-base font-semibold mb-2" htmlFor="content">
+          Event Description
         </label>
         <textarea
           id="content"
           {...register('content', {
             required: 'This is required field',
-            minLength: { value: 10, message: 'This field must have at least 10 characters' },
+            minLength: { value: 10, message: 'Sescription must have at least 10 characters' },
+            maxLength: { value: 200, message: 'Description should be no more than 200 characters.' },
           })}
           className="border border-gray-200 rounded w-full py-2 px-3 text-gray-500 leading-normal focus:outline-none focus:border-blue-200 focus:ring-1 focus:ring-blue-200"
         />

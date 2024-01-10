@@ -1,3 +1,2 @@
-3. event card update
-4. add empty card
-5. add login and authorization
+- add description for events on calendar side
+- add login and authorization
