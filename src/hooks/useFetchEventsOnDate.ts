@@ -4,6 +4,7 @@ import { addDays, subDays } from 'date-fns';
 
 const useFetchEventsOnDate = (currentDate: Date) => {
   const queryClient = useQueryClient();
+
   const { data, isLoading, error } = useQuery({
     queryKey: ['fetchEventsOnDate', currentDate],
     queryFn: () => getEventsOnDateAPI(currentDate),
