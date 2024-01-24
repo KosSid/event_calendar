@@ -10,13 +10,16 @@ const EventCalendarTitleWeekDays: FC = () => {
   const weekDay = getDay(date);
 
   return (
-    <div className="grid grid-cols-7 gap-2 mb-2">
+    <div className="mb-4 grid grid-cols-7 gap-2 lg:mb-0">
       {WEEKDAYS.map((day, i) => (
         <div
           key={day}
-          className={mergeClasses('text-gray-400 uppercase p-2 text-center text-xs sm:text-sm md:text-base', {
-            'text-blue-200': weekDay === i,
-          })}
+          className={mergeClasses(
+            'text-customColorTitleLight uppercase p-2 text-center text-xs sm:text-sm md:text-base',
+            {
+              'text-customColorTitle': weekDay === i,
+            }
+          )}
         >
           {day}
         </div>

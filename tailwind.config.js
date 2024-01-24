@@ -6,7 +6,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Roboto', 'sans-serif'],
+        sans: ['Open Sans', 'sans-serif'],
       },
       maxHeight: {
         '500px': '500px',
@@ -26,6 +26,13 @@ export default {
         '600px': '600px',
         '400px': '400px',
         '300px': '300px',
+      },
+      colors: {
+        customColorTitle: '#0f172a',
+        customColorTitleLight: '#94a3b8',
+      },
+      boxShadow: {
+        right: '8px 0 15px -3px rgba(0, 0, 0, 0.1)',
       },
     },
   },

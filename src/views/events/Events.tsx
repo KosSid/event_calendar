@@ -6,7 +6,7 @@ import AddEvent from './components/AddEvent';
 
 const Events: FC<CurrentDateProps> = ({ currentDate }) => {
   return (
-    <div className="bg-blue-300 p-2 min-h-2/5 lg:w-2/5 lg:order-1 lg:min-h-screen">
+    <div className="text-customColorTitle flex-1 bg-blue-50 px-3 py-4 lg:w-2/5 lg:order-1 lg:min-h-screen lg:shadow-md">
       <EventsListTitle currentDate={currentDate} />
       <AddEvent />
       <EventsList currentDate={currentDate} />

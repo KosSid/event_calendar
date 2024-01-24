@@ -31,3 +31,11 @@ export interface EventDataFormInterface {
   eventDate: string;
   eventType: 'public' | 'custom';
 }
+
+export enum ButtonVariant {
+  Primary = 'primary',
+  Secondary = 'secondary',
+  Delete = 'delete',
+  CalendarYearSwitcher = 'calendarYearSwitcher',
+  Today = 'today',
+}

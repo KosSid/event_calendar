@@ -36,7 +36,7 @@ const EventCalendarMonthDates: FC<EventCalendarProps> = ({ currentDate, setCurre
   }
 
   return (
-    <div className="grid grid-cols-7 gap-2">
+    <div className="mb-4 grid grid-cols-7 gap-2 lg:mb-0">
       {daysInMonth.map((day) => {
         const dateKey = formatISO(day, { representation: 'date' });
         const eventDayType = eventTypeObj ? eventTypeObj[dateKey] : undefined;

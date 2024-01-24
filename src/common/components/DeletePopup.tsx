@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import Button from './Button';
+import { ButtonVariant } from '../../views/interfaces';
 
 interface DeleteEventPopupProps {
   modalClose?: () => void;
@@ -14,10 +15,10 @@ const DeletePopup: FC<DeleteEventPopupProps> = ({ modalClose, onDelete, isDeleti
       <h2 className="text-lg font-bold mb-4 capitalize">{`Delete ${title}`}</h2>
       <p>{`Are you sure you want to delete this ${title} ?`}</p>
       <div className="flex justify-end mt-4">
-        <Button variant="secondary" handleClick={modalClose}>
+        <Button variant={ButtonVariant.Secondary} handleClick={modalClose}>
           Cancel
         </Button>
-        <Button disabled={isDeleting} variant="delete" handleClick={onDelete}>
+        <Button disabled={isDeleting} variant={ButtonVariant.Delete} handleClick={onDelete}>
           Delete
         </Button>
       </div>

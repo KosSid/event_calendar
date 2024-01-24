@@ -1,12 +1,13 @@
 import { FC, useEffect } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { format } from 'date-fns';
-import { EventInterface } from '../../interfaces';
+import { ButtonVariant, EventInterface } from '../../interfaces';
 import Button from '../../../common/components/Button';
 import ErrorFormMessage from './ErrorFormMessage';
 import { useCreateEvent } from '../../../hooks/useCreateEvent';
 import { useEpdateEvent } from '../../../hooks/useUpdateEvent';
 import { useGetDateFromUrl } from '../../../hooks/useGetDateFromUrl';
+import { mergeClasses } from '../../../utils/mergeClasses';
 
 interface EventFormProps {
   editFormInitialState?: EventInterface;
@@ -30,6 +31,8 @@ const EventForm: FC<EventFormProps> = ({ editFormInitialState, modalClose }) => 
   } = useForm<EventInterface>({
     defaultValues: editFormInitialState ? editFormInitialState : createEventDefaultFormValues,
   });
+
+  console.log(errors);
 
   const { createEvent, isCreated, isCreating } = useCreateEvent();
   const { updateEvent, isUpdated, isUpdating } = useEpdateEvent();
@@ -58,7 +61,7 @@ const EventForm: FC<EventFormProps> = ({ editFormInitialState, modalClose }) => 
   return (
     <form
       onSubmit={handleSubmit(handleFormSubmit)}
-      className="p-3 w-64 sm:w-400px md:w-600px md:p-6 bg-blue-100 rounded mx-auto relative"
+      className="w-64 sm:w-400px md:w-600px bg-blue-100 rounded mx-auto relative"
     >
       <div className="mb-6 relative">
         <label className="block text-gray-500 font-semibold mb-2 text-base" htmlFor="title">
@@ -71,7 +74,12 @@ const EventForm: FC<EventFormProps> = ({ editFormInitialState, modalClose }) => 
             required: 'This is required field',
             maxLength: { value: 50, message: 'Title should be no more than 50 characters.' },
           })}
-          className="border border-gray-200 rounded w-full py-2 px-3 text-gray-500 leading-normal focus:outline-none focus:border-blue-200 focus:ring-1 focus:ring-blue-200"
+          className={mergeClasses(
+            'border border-gray-200 rounded w-full py-2 px-3 text-gray-500 leading-normal focus:outline-none focus:border-blue-200 focus:ring-1 focus:ring-blue-200',
+            {
+              'border-red-400 focus:border-red-400': errors.title,
+            }
+          )}
         />
         {errors && errors?.title && <ErrorFormMessage message={errors?.title.message} />}
       </div>
@@ -99,15 +107,20 @@ const EventForm: FC<EventFormProps> = ({ editFormInitialState, modalClose }) => 
             minLength: { value: 10, message: 'Sescription must have at least 10 characters' },
             maxLength: { value: 200, message: 'Description should be no more than 200 characters.' },
           })}
-          className="border border-gray-200 rounded w-full py-2 px-3 text-gray-500 leading-normal focus:outline-none focus:border-blue-200 focus:ring-1 focus:ring-blue-200"
+          className={mergeClasses(
+            'border border-gray-200 rounded w-full py-2 px-3 text-gray-500 leading-normal focus:outline-none focus:border-blue-200 focus:ring-1 focus:ring-blue-200',
+            {
+              'border-red-400 focus:border-red-400': errors.title,
+            }
+          )}
         />
         {errors && errors?.content && <ErrorFormMessage className="-bottom-3" message={errors?.content.message} />}
       </div>
       <div className="flex flex-wrap gap-2 justify-center">
-        <Button type="reset" handleClick={handleFormClose} variant="secondary">
+        <Button type="reset" handleClick={handleFormClose} variant={ButtonVariant.Secondary}>
           Cancel
         </Button>
-        <Button disabled={isUpdating || isCreating} type="submit" variant="primary">
+        <Button disabled={isUpdating || isCreating} type="submit" variant={ButtonVariant.Primary}>
           {editFormInitialState ? 'Edit Event' : 'Create Event'}
         </Button>
       </div>
