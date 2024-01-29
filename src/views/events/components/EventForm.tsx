@@ -43,7 +43,6 @@ const EventForm: FC<EventFormProps> = ({ editFormInitialState, modalClose }) => 
 
   useOutsideClick(dropdownRef, () => {
     if (showDropdown) {
-      console.log('click');
       setShowDropdown(false);
     }
   });
@@ -62,9 +61,9 @@ const EventForm: FC<EventFormProps> = ({ editFormInitialState, modalClose }) => 
 
   const handleFormSubmit: SubmitHandler<EventInterface> = (formData) => {
     if (editFormInitialState) {
-      updateEvent(formData);
+      updateEvent({ ...formData, eventType });
     } else {
-      const formDataToSubmit = { ...formData, eventDate: format(date, 'yyyy-MM-dd') };
+      const formDataToSubmit = { ...formData, eventType, eventDate: format(date, 'yyyy-MM-dd') };
       createEvent(formDataToSubmit);
     }
   };
@@ -115,23 +114,23 @@ const EventForm: FC<EventFormProps> = ({ editFormInitialState, modalClose }) => 
           ) : (
             <EventTypeSign variant="legend" eventType="public" />
           )}
-          <span className="ml-2">{eventType === 'custom' ? 'Custom' : 'Public'}</span>
+          <span className="ml-2">{eventType === 'custom' ? 'Custom Event' : 'Public Event'}</span>
         </button>
         {showDropdown && (
-          <div ref={dropdownRef} className="absolute z-10 w-full bg-white shadow-md mt-1 rounded">
+          <div ref={dropdownRef} className="absolute z-10 w-full bg-white shadow mt-1 rounded">
             <div
               className="flex items-center justify-start text-sm py-2 px-4 hover:bg-gray-100 cursor-pointer"
               onClick={() => selectEventType('custom')}
             >
               <EventTypeSign variant="legend" eventType={'custom'} />
-              <span className="ml-2">Custom</span>
+              <span className="ml-2">Custom Event</span>
             </div>
             <div
               className="flex items-center justify-start text-sm py-2 px-4 hover:bg-gray-100 cursor-pointer"
               onClick={() => selectEventType('public')}
             >
               <EventTypeSign variant="legend" eventType={'public'} />
-              <span className="ml-2">Public</span>
+              <span className="ml-2">Public Event</span>
             </div>
           </div>
         )}

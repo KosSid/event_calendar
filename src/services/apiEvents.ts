@@ -8,7 +8,8 @@ export async function getEventsOnDateAPI(date: Date): Promise<EventInterface[]> 
   const { data: events, error }: PostgrestResponse<EventInterface> = await supabase
     .from('events')
     .select('*')
-    .eq('eventDate', formattedDate);
+    .eq('eventDate', formattedDate)
+    .order('created_at', { ascending: true });
 
   if (error) {
     throw new Error(`Error fetching, check getEventsOnDateAPI supabase request: ${error.message}`);
