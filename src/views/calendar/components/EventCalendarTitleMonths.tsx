@@ -23,15 +23,15 @@ const EventCalendarTitleMonths: FC<EventCalendarProps> = ({ setCurrentDate, curr
   };
 
   return (
-    <div className="grid grid-cols-12 gap-1 mb-4">
+    <div className="mb-4 grid grid-cols-12 py-2 gap-1 lg:mb-0">
       {MONTHS.map((month, i) => (
         <div
           onClick={() => handleClick(i)}
           key={month}
           className={mergeClasses(
-            'text-gray-200 uppercase text-center text-xs sm:text-sm md:text-base cursor-pointer hover:text-gray-400 hover:font-semibold',
+            'text-customColorTitleLight rounded-full uppercase text-center text-xs sm:p-2 sm:hover:bg-gray-100 sm:text-sm md:text-base cursor-pointer hover:text-customColorTitle',
             {
-              'text-gray-400 font-semibold': monthOfYear === i,
+              'text-customColorTitle': monthOfYear === i,
             }
           )}
         >

@@ -1,12 +1,15 @@
-import { FC, useEffect } from 'react';
+import { FC, useEffect, useRef, useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { format } from 'date-fns';
-import { EventInterface } from '../../interfaces';
+import { ButtonVariant, EventInterface, EventTypeType } from '../../interfaces';
 import Button from '../../../common/components/Button';
 import ErrorFormMessage from './ErrorFormMessage';
 import { useCreateEvent } from '../../../hooks/useCreateEvent';
 import { useEpdateEvent } from '../../../hooks/useUpdateEvent';
 import { useGetDateFromUrl } from '../../../hooks/useGetDateFromUrl';
+import { mergeClasses } from '../../../utils/mergeClasses';
+import EventTypeSign from '../../../common/components/EventTypeSign';
+import { useOutsideClick } from '../../../hooks/useOutsideClick';
 
 interface EventFormProps {
   editFormInitialState?: EventInterface;
@@ -22,6 +25,10 @@ const createEventDefaultFormValues: EventInterface = {
 
 const EventForm: FC<EventFormProps> = ({ editFormInitialState, modalClose }) => {
   const date = useGetDateFromUrl() || new Date();
+  const [eventType, setEventType] = useState<EventTypeType>(editFormInitialState?.eventType || 'custom');
+  const [showDropdown, setShowDropdown] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
   const {
     register,
     handleSubmit,
@@ -34,6 +41,12 @@ const EventForm: FC<EventFormProps> = ({ editFormInitialState, modalClose }) => 
   const { createEvent, isCreated, isCreating } = useCreateEvent();
   const { updateEvent, isUpdated, isUpdating } = useEpdateEvent();
 
+  useOutsideClick(dropdownRef, () => {
+    if (showDropdown) {
+      setShowDropdown(false);
+    }
+  });
+
   useEffect(() => {
     if (isCreated || isUpdated) {
       reset(createEventDefaultFormValues);
@@ -41,11 +54,16 @@ const EventForm: FC<EventFormProps> = ({ editFormInitialState, modalClose }) => 
     }
   }, [isCreated, reset, isUpdated, modalClose]);
 
+  const selectEventType = (type: EventTypeType) => {
+    setEventType(type);
+    setShowDropdown(false);
+  };
+
   const handleFormSubmit: SubmitHandler<EventInterface> = (formData) => {
     if (editFormInitialState) {
-      updateEvent(formData);
+      updateEvent({ ...formData, eventType });
     } else {
-      const formDataToSubmit = { ...formData, eventDate: format(date, 'yyyy-MM-dd') };
+      const formDataToSubmit = { ...formData, eventType, eventDate: format(date, 'yyyy-MM-dd') };
       createEvent(formDataToSubmit);
     }
   };
@@ -56,54 +74,101 @@ const EventForm: FC<EventFormProps> = ({ editFormInitialState, modalClose }) => 
   };
 
   return (
-    <form onSubmit={handleSubmit(handleFormSubmit)} className="md:w-500px p-3 bg-blue-100 rounded mx-auto relative">
-      <div className="mb-6 relative">
-        <label className="block text-gray-500 font-bold mb-2 text-base" htmlFor="title">
-          Title
+    <form
+      onSubmit={handleSubmit(handleFormSubmit)}
+      className="text-sm sm:text-base p-2 w-64 sm:p-6 sm:w-600px md:w-700px bg-customColorBgEvents border border-gray-200 rounded mx-auto relative text-customColorTtile"
+    >
+      <div className="mb-4">
+        <label className="p-1 block font-semibold mb-2" htmlFor="title">
+          Event Name
         </label>
         <input
+          placeholder="Add Event Title"
           type="text"
           id="title"
           {...register('title', {
-            required: 'This is required field',
+            required: 'Required field',
+            maxLength: { value: 50, message: 'Title should be no more than 50 characters.' },
           })}
-          className="border border-gray-200 rounded w-full py-2 px-3 text-gray-500 leading-normal focus:outline-none focus:border-blue-200 focus:ring-1 focus:ring-blue-200"
+          className={mergeClasses(
+            'border border-gray-200 rounded w-full py-2 px-3 leading-normal focus:outline-none focus:border-blue-200 focus:ring-1 focus:ring-blue-200',
+            {
+              'border-red-400 focus:outline-none focus:border-red-400 focus:ring-1 focus:ring-red-200': errors.title,
+            }
+          )}
         />
-        {errors && errors?.title && <ErrorFormMessage message={errors?.title.message} />}
+        {errors && errors?.title && <ErrorFormMessage className="mt-2" message={errors?.title.message} />}
       </div>
-      <div className="mb-6">
-        <label className="block text-gray-500 text-base font-bold mb-2" htmlFor="eventType">
+
+      <div className="mb-4 relative">
+        <label className="p-1 block text-base font-semibold mb-2" htmlFor="eventType">
           Event Type
         </label>
-        <select
-          id="eventType"
-          {...register('eventType')}
-          className="border border-gray-200 rounded w-full py-2 px-3 text-gray-500 leading-normal focus:outline-none focus:border-blue-200 focus:ring-1 focus:ring-blue-200"
+        <button
+          type="button"
+          onClick={() => setShowDropdown(!showDropdown)}
+          className="text-sm sm:text-base border border-gray-200 rounded w-full py-2 px-4 leading-normal flex justify-start items-center focus:outline-none focus:border-blue-200 focus:ring-1 focus:ring-blue-200"
         >
-          <option value="custom">Custom</option>
-          <option value="public">Public</option>
-        </select>
+          {eventType === 'custom' ? (
+            <EventTypeSign variant="legend" eventType="custom" />
+          ) : (
+            <EventTypeSign variant="legend" eventType="public" />
+          )}
+          <span className="ml-2">{eventType === 'custom' ? 'Custom Event' : 'Public Event'}</span>
+        </button>
+        {showDropdown && (
+          <div ref={dropdownRef} className="absolute z-10 w-full bg-white shadow mt-1 rounded">
+            <div
+              className="flex items-center justify-start text-sm py-2 px-4 hover:bg-gray-100 cursor-pointer"
+              onClick={() => selectEventType('custom')}
+            >
+              <EventTypeSign variant="legend" eventType={'custom'} />
+              <span className="ml-2">Custom Event</span>
+            </div>
+            <div
+              className="flex items-center justify-start text-sm py-2 px-4 hover:bg-gray-100 cursor-pointer"
+              onClick={() => selectEventType('public')}
+            >
+              <EventTypeSign variant="legend" eventType={'public'} />
+              <span className="ml-2">Public Event</span>
+            </div>
+          </div>
+        )}
+        <input type="hidden" value={eventType} {...register('eventType')} />
       </div>
-      <div className="mb-6 relative">
-        <label className="block text-gray-500 text-base font-bold mb-2" htmlFor="content">
-          Content
+
+      <div className="mb-4">
+        <label className="p-1 block text-base font-semibold mb-2" htmlFor="content">
+          Event Description
         </label>
         <textarea
+          placeholder="Add Event Description"
           id="content"
           {...register('content', {
-            required: 'This is required field',
-            minLength: { value: 10, message: 'This field must have at least 10 characters' },
+            required: 'Required field',
+            minLength: { value: 10, message: 'Description needs at least 10 characters.' },
+            maxLength: { value: 200, message: 'Keep the description under 200 characters.' },
           })}
-          className="border border-gray-200 rounded w-full py-2 px-3 text-gray-500 leading-normal focus:outline-none focus:border-blue-200 focus:ring-1 focus:ring-blue-200"
+          className={mergeClasses(
+            'border border-gray-200 rounded w-full py-2 px-3 leading-normal focus:outline-none focus:border-blue-200 focus:ring-1 focus:ring-blue-200',
+            {
+              'border-red-400 focus:outline-none focus:border-red-400 focus:ring-1 focus:ring-red-200': errors.content,
+            }
+          )}
         />
-        {errors && errors?.content && <ErrorFormMessage className="-bottom-3" message={errors?.content.message} />}
+        {errors && errors?.content && <ErrorFormMessage message={errors?.content.message} />}
       </div>
-      <div className="flex flex-wrap gap-2 justify-center">
-        <Button type="reset" handleClick={handleFormClose} variant="secondary">
+      <div className="flex flex-wrap gap-1 justify-center items-center">
+        <Button type="reset" handleClick={handleFormClose} variant={ButtonVariant.Secondary}>
           Cancel
         </Button>
-        <Button disabled={isUpdating || isCreating} type="submit" variant="primary">
-          {editFormInitialState ? 'Edit Event' : 'Create Event'}
+        <Button
+          disabled={isUpdating || isCreating}
+          type="submit"
+          variant={ButtonVariant.AddEvent}
+          className="h-10 w-24"
+        >
+          {editFormInitialState ? 'Edit' : 'Create'}
         </Button>
       </div>
     </form>

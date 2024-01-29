@@ -6,7 +6,7 @@ import Calendar from '../views/calendar/Calendar';
 import Events from '../views/events/Events';
 
 const EventCalendar: FC = () => {
-  const date = useGetDateFromUrl() || new Date();
+  const date = useGetDateFromUrl() ?? new Date();
   const [currentDate, setCurrentDate] = useState<Date>(date);
   const [, setSearchParams] = useSearchParams();
 
@@ -16,7 +16,7 @@ const EventCalendar: FC = () => {
   }, []);
 
   return (
-    <div className="mx-auto min-w-96 lg:flex min-h-screen">
+    <div className="min-h-screen flex flex-col lg:flex lg:flex-row">
       <div id="modal-root"></div>
       <Calendar currentDate={currentDate} setCurrentDate={setCurrentDate} />
       <Events currentDate={currentDate} />

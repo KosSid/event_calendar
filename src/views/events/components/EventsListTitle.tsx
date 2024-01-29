@@ -3,10 +3,18 @@ import { format } from 'date-fns';
 import { CurrentDateProps } from '../../interfaces';
 
 const EventsListTitle: FC<CurrentDateProps> = ({ currentDate }) => {
+  const day = format(currentDate, 'd');
+  const ordinal = format(currentDate, 'do').replace(day, '');
+  const restOfDate = format(currentDate, 'MMMM');
+
   return (
-    <h2 className="text-blue-50 text-3xl sm:text-4xl md:text-5xl flex-col px-3 pt-4 pb-2 tracking-wide uppercase mb-8">
-      <p>{format(currentDate, 'EEEE')}</p>
-      <p>{format(currentDate, "do 'of' MMMM''yy")}</p>
+    <h2 className="title-separator text-customColorTitle sm:my-1 md:my-6 text-2xl sm:text-3xl md:text-4xl flex flex-wrap gap-3">
+      <p>{`${format(currentDate, 'EEEE')},`}</p>
+      <p>
+        <span className="">{`${restOfDate} `}</span>
+        <span>{day}</span>
+        <sup>{ordinal}</sup>
+      </p>
     </h2>
   );
 };

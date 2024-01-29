@@ -1,9 +1,8 @@
 import { FC } from 'react';
 import { EventDayTypeInterface } from '../../interfaces';
 import { format, isToday, startOfMonth } from 'date-fns';
-import { MdOutlineHolidayVillage } from 'react-icons/md';
-import { MdEventAvailable } from 'react-icons/md';
 import clsx from 'clsx';
+import EventTypeSign from '../../../common/components/EventTypeSign';
 
 interface EventCalendarDayProps {
   day: Date;
@@ -18,19 +17,21 @@ const EventCalendarDay: FC<EventCalendarDayProps> = ({ day, currentDate, eventTy
     <div
       onClick={() => handleClick(day)}
       className={clsx(
-        'border h-12 rounded-lg p-2 text-center text-xs sm:h-14 sm:text-sm md:text-base md:h-16 lg:h-20 lg:text-2xl hover:text-blue-200 transition-all ease-linear duration-800 cursor-pointer flex flex-col items-center justify-center',
+        'self-center h-12 sm:h-14 md:h-16 lg:h-20 border rounded-lg p-2 text-center text-xs sm:text-sm md:text-base lg:text-2xl transition-all ease-linear duration-800 cursor-pointer flex flex-col items-end justify-start',
         {
           'pointer-events-none text-gray-200': day < startDayOfMonth,
-          'text-gray-400': day >= startDayOfMonth && format(day, 'yyyy-MM-dd') !== format(currentDate, 'yyyy-MM-dd'),
-          'text-blue-50 bg-blue-300': format(day, 'yyyy-MM-dd') === format(currentDate, 'yyyy-MM-dd'),
-          'border-blue-300': isToday(day),
+          'text-customColorTitle hover:bg-gray-100':
+            day >= startDayOfMonth && format(day, 'yyyy-MM-dd') !== format(currentDate, 'yyyy-MM-dd') && !isToday(day),
+          'bg-blue-100 text-blue-900 ':
+            format(day, 'yyyy-MM-dd') === format(currentDate, 'yyyy-MM-dd') && !isToday(day),
+          'text-stone-50 bg-blue-500 hover:bg-blue-600': isToday(day),
         }
       )}
     >
-      <span>{format(day, 'd')}</span>
-      <span className="flex">
-        {eventType?.public && <MdOutlineHolidayVillage className="text-xs sm:text-sm md:text-base lg:text-xl" />}
-        {eventType?.custom && <MdEventAvailable className="text-xs sm:text-sm md:text-base lg:text-xl" />}
+      <span className="grow">{format(day, 'd')}</span>
+      <span className="flex flex-wrap gap-1">
+        {eventType?.public && <EventTypeSign variant="day" eventType="public" />}
+        {eventType?.custom && <EventTypeSign variant="day" eventType="custom" />}
       </span>
     </div>
   );

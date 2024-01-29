@@ -1,11 +1,11 @@
 import { FC } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { formatDateToYearMonthDayObj } from '../../../utils/formatDateToYearMonthDayObj';
-import { format, sub, add, isToday } from 'date-fns';
+import { format, sub, add } from 'date-fns';
 import { GoChevronRight } from 'react-icons/go';
 import { GoChevronLeft } from 'react-icons/go';
-import { CgToday } from 'react-icons/cg';
 import Button from '../../../common/components/Button';
+import { ButtonVariant } from '../../interfaces';
 
 interface EventCalendarTitleProps {
   currentDate: Date;
@@ -14,7 +14,6 @@ interface EventCalendarTitleProps {
 
 const EventCalendarTitle: FC<EventCalendarTitleProps> = ({ currentDate, setCurrentDate }) => {
   const [, setSearchParams] = useSearchParams();
-  const today = isToday(currentDate);
 
   function handleClick(direction: 'forward' | 'backward' | 'today') {
     let newDate: Date = new Date();
@@ -27,20 +26,21 @@ const EventCalendarTitle: FC<EventCalendarTitleProps> = ({ currentDate, setCurre
   }
 
   return (
-    <div className="relative pt-2 flex flex-row items-center justify-end mb-6 lg:mb-20 lg:pt-6">
-      {!today && (
-        <Button className="flex rounded-lg mr-2" handleClick={() => handleClick('today')}>
-          <span className="mr-1 uppercase text-xs text-gray-400">Today</span>
-          <CgToday className="text-gray-400" />
+    <div className="mb-6 pt-4 text-customColorTitle flex justify-end lg:pt-0 lg:mb-0">
+      <div className="flex justify-center">
+        <Button variant={ButtonVariant.Today} handleClick={() => handleClick('today')}>
+          <span>Today</span>
         </Button>
-      )}
-      <Button className="mx-0 rounded-l-lg" handleClick={() => handleClick('backward')}>
-        <GoChevronLeft className="text-gray-400" />
-      </Button>
-      <Button className="mx-0 rounded-r-lg" handleClick={() => handleClick('forward')}>
-        <GoChevronRight className="text-gray-400" />
-      </Button>
-      <h2 className="text-gray-300 text-center ml-2 text-4xl md:text-5xl lg:text-6xl">{format(currentDate, 'yyyy')}</h2>
+      </div>
+      <div className="inline-flex justify-center items-center text-lg">
+        <Button variant={ButtonVariant.CalendarYearSwitcher} handleClick={() => handleClick('backward')}>
+          <GoChevronLeft />
+        </Button>
+        <h2 className="text-center mx-2 text-4xl md:text-5xl lg:text-6xl">{format(currentDate, 'yyyy')}</h2>
+        <Button variant={ButtonVariant.CalendarYearSwitcher} handleClick={() => handleClick('forward')}>
+          <GoChevronRight />
+        </Button>
+      </div>
     </div>
   );
 };

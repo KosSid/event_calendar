@@ -7,7 +7,7 @@ interface ErrorFormMessageProps {
 }
 
 const ErrorFormMessage: FC<ErrorFormMessageProps> = ({ message, className }) => {
-  return <p className={mergeClasses('text-red-300 absolute -bottom-5 left-0 text-xs', className)}>{message}</p>;
+  return <p className={mergeClasses('text-red-300 text-xs px-3 mt-1', className)}>{message}</p>;
 };
 
 export default ErrorFormMessage;
