@@ -16,7 +16,7 @@ const EventCalendarDay: FC<EventCalendarDayProps> = ({ day, currentDate, eventTy
     <div
       onClick={() => handleClick(day)}
       className={clsx(
-        'h-12 sm:h-14 md:h-16 lg:h-20 border rounded-lg p-2 text-center text-xs sm:text-sm md:text-base lg:text-2xl transition-all ease-linear duration-800 cursor-pointer flex flex-col items-end justify-start',
+        'self-center h-12 sm:h-14 md:h-16 lg:h-20 border rounded-lg p-2 text-center text-xs sm:text-sm md:text-base lg:text-2xl transition-all ease-linear duration-800 cursor-pointer flex flex-col items-end justify-start',
         {
           'pointer-events-none text-gray-200': day < startDayOfMonth,
           'text-customColorTitle hover:bg-gray-100':
@@ -29,8 +29,8 @@ const EventCalendarDay: FC<EventCalendarDayProps> = ({ day, currentDate, eventTy
     >
       <span className="grow">{format(day, 'd')}</span>
       <span className="flex flex-wrap gap-1">
-        {eventType?.public && <span className="bg-indigo-700 rounded-full h-2 w-2 sm:h-4 sm:w-4 md:h-6 md:w-6 " />}
-        {eventType?.custom && <span className="bg-fuchsia-700 rounded-full h-2 w-2 sm:h-4 sm:w-4 md:h-6 md:w-6 " />}
+        {eventType?.public && <span className="bg-indigo-400 rounded-full h-2 w-2 md:h-4 md:w-4 " />}
+        {eventType?.custom && <span className="bg-fuchsia-400 rounded-full h-2 w-2 md:h-4 md:w-4" />}
       </span>
     </div>
   );

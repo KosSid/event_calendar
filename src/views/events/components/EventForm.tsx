@@ -121,7 +121,7 @@ const EventForm: FC<EventFormProps> = ({ editFormInitialState, modalClose }) => 
           Cancel
         </Button>
         <Button disabled={isUpdating || isCreating} type="submit" variant={ButtonVariant.Primary}>
-          {editFormInitialState ? 'Edit Event' : 'Create Event'}
+          {editFormInitialState ? 'Edit' : 'Create'}
         </Button>
       </div>
     </form>

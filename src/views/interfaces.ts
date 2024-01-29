@@ -38,4 +38,5 @@ export enum ButtonVariant {
   Delete = 'delete',
   CalendarYearSwitcher = 'calendarYearSwitcher',
   Today = 'today',
+  AddEvent = 'addEvent',
 }

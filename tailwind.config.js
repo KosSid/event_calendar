@@ -30,9 +30,11 @@ export default {
       colors: {
         customColorTitle: '#0f172a',
         customColorTitleLight: '#94a3b8',
+        customColorBgEvents: '#f8fafd',
+        customColorBgModalTop: '#F1F3F4',
       },
       boxShadow: {
-        right: '8px 0 15px -3px rgba(0, 0, 0, 0.1)',
+        modal: '-1px 24px 38px 3px rgba(0,0,0,0.14), 0 9px 46px 8px rgba(0,0,0,0.12), 0 11px 15px -1px rgba(0,0,0,0.2)',
       },
     },
   },
