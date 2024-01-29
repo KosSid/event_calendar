@@ -7,6 +7,7 @@ const App: FC = () => {
     <Routes>
       <Route index element={<Navigate to="/calendar" />} />
       <Route path="/calendar" element={<EventCalendar />} />
+      <Route path="*" element={<Navigate to="/calendar" replace />} />
     </Routes>
   );
 };
