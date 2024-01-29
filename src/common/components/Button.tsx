@@ -21,17 +21,17 @@ const Button: FC<ButtonProps> = ({
 }) => {
   let variantStyles = '';
   switch (variant) {
-    case 'primary':
+    case 'addEvent':
       variantStyles =
-        'h-10 w-28 bg-blue-400 rounded px-4 text-stone-50 active:scale-95 transition-all ease-in focus:outline-none focus-visible:ring-1 focus-visible:ring-blue-300';
+        'flex items-center justify-center lg:mx-4 text-stone-50 bg-blue-500 hover:bg-blue-600 font-medium px-4 lg:px-6 border border-gray-300 rounded-md shadow-sm hover:shadow-md focus:outline-none focus-visible:ring-1 focus-visible:ring-blue-300 active:scale-95 transition duration-150 ease-in-out';
       break;
     case 'secondary':
       variantStyles =
-        'h-10 w-28 hover:border hover:border-blue-400 rounded px-4 text-blue-400 active:scale-95 transition-all ease-in focus:outline-none focus-visible:ring-1 focus-visible:ring-blue-300';
+        'h-10 w-24 hover:border hover:border-blue-400 rounded px-4 text-blue-400 active:scale-95 transition-all ease-in focus:outline-none focus-visible:ring-1 focus-visible:ring-blue-300';
       break;
     case 'delete':
       variantStyles =
-        'h-10 w-28 bg-red-500 hover:bg-red-600 rounded px-4 text-stone-50 active:scale-95 transition-all ease-in focus:outline-none focus-visible:ring-1 focus-visible:ring-red-800';
+        'h-10 w-24 bg-red-500 hover:bg-red-600 rounded px-4 text-stone-50 active:scale-95 transition-all ease-in focus:outline-none focus-visible:ring-1 focus-visible:ring-red-800';
       break;
     case 'calendarYearSwitcher':
       variantStyles =
@@ -40,10 +40,6 @@ const Button: FC<ButtonProps> = ({
     case 'today':
       variantStyles =
         'flex items-center justify-center text-xs md:text-base lg:text-xl lg:mx-4 bg-white font-medium px-4 lg:px-6 border border-gray-300 rounded-md focus:outline-none focus-visible:ring-1 focus-visible:ring-blue-300 active:bg-gray-100 active:scale-95 transition duration-150 ease-in-out uppercase font-semibold hover:bg-gray-100';
-      break;
-    case 'addEvent':
-      variantStyles =
-        'flex items-center justify-center text-base lg:text-xl lg:mx-4 text-stone-50 bg-blue-500 hover:bg-blue-600 font-medium px-4 lg:px-6 border border-gray-300 rounded-md shadow-sm hover:shadow-md focus:outline-none focus-visible:ring-1 focus-visible:ring-blue-300 active:scale-95 transition duration-150 ease-in-out uppercase';
       break;
     default:
       variantStyles = '';

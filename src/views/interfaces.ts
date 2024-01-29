@@ -1,9 +1,11 @@
+export type EventTypeType = 'public' | 'custom';
+
 export interface EventInterface {
   id?: number;
   title: string;
   content: string;
   eventDate: string;
-  eventType: 'public' | 'custom';
+  eventType: EventTypeType;
   createdAt?: string;
 }
 
@@ -33,7 +35,6 @@ export interface EventDataFormInterface {
 }
 
 export enum ButtonVariant {
-  Primary = 'primary',
   Secondary = 'secondary',
   Delete = 'delete',
   CalendarYearSwitcher = 'calendarYearSwitcher',

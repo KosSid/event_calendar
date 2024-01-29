@@ -24,6 +24,7 @@ export default {
       },
       width: {
         '600px': '600px',
+        '700px': '700px',
         '400px': '400px',
         '300px': '300px',
       },

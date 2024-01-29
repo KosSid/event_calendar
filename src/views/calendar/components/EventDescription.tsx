@@ -1,14 +1,15 @@
 import { FC } from 'react';
+import EventTypeSign from '../../../common/components/EventTypeSign';
 
 const EventDescription: FC = () => {
   return (
     <div className="mt-3 flex flex-wrap gap-3 text-customColorTitle text-xs sm:text-sm lg:text-base">
       <div className="flex gap-1 items-center">
-        <span className="bg-indigo-400 rounded-full h-3 w-3 sm:h-4 sm:w-4 md:h-6 md:w-6 " />
+        <EventTypeSign variant="legend" eventType="public" />
         <span>Public event (e.g., community event, holiday)</span>
       </div>
       <div className="flex gap-1 items-center">
-        <span className="bg-fuchsia-400 rounded-full h-3 w-3 sm:h-4 sm:w-4 md:h-6 md:w-6 " />
+        <EventTypeSign variant="legend" eventType="custom" />
         <span> Custom event (e.g., personal meeting, anniversary)</span>
       </div>
     </div>

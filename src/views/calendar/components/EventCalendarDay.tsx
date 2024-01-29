@@ -2,6 +2,7 @@ import { FC } from 'react';
 import { EventDayTypeInterface } from '../../interfaces';
 import { format, isToday, startOfMonth } from 'date-fns';
 import clsx from 'clsx';
+import EventTypeSign from '../../../common/components/EventTypeSign';
 
 interface EventCalendarDayProps {
   day: Date;
@@ -29,8 +30,8 @@ const EventCalendarDay: FC<EventCalendarDayProps> = ({ day, currentDate, eventTy
     >
       <span className="grow">{format(day, 'd')}</span>
       <span className="flex flex-wrap gap-1">
-        {eventType?.public && <span className="bg-indigo-400 rounded-full h-2 w-2 md:h-4 md:w-4 " />}
-        {eventType?.custom && <span className="bg-fuchsia-400 rounded-full h-2 w-2 md:h-4 md:w-4" />}
+        {eventType?.public && <EventTypeSign variant="day" eventType="public" />}
+        {eventType?.custom && <EventTypeSign variant="day" eventType="custom" />}
       </span>
     </div>
   );

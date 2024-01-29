@@ -1,2 +1,0 @@
-- add description for events on calendar side
-- add login and authorization

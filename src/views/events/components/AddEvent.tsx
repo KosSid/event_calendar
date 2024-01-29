@@ -10,7 +10,10 @@ const AddEvent: FC = () => {
     <div className="my-6 mx-0 px-3">
       <Modal>
         <Modal.Open modalWindowNameToOpen="eventFormModal">
-          <Button className="py-4 mx-0 lg:mx-0 w-full flex gap-3" variant={ButtonVariant.AddEvent}>
+          <Button
+            className="py-4 mx-0 lg:mx-0 w-full flex gap-3 uppercase text-base lg:text-xl"
+            variant={ButtonVariant.AddEvent}
+          >
             <FaPlus />
             <span>Event</span>
           </Button>
