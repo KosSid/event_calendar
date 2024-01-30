@@ -107,7 +107,7 @@ const EventForm: FC<EventFormProps> = ({ editFormInitialState, modalClose }) => 
         <button
           type="button"
           onClick={() => setShowDropdown(!showDropdown)}
-          className="text-sm sm:text-base border border-gray-200 rounded w-full py-2 px-4 leading-normal flex justify-start items-center focus:outline-none focus:border-blue-200 focus:ring-1 focus:ring-blue-200"
+          className="bg-white text-sm sm:text-base border border-gray-200 rounded w-full py-2 px-4 leading-normal flex justify-start items-center focus:outline-none focus:border-blue-200 focus:ring-1 focus:ring-blue-200"
         >
           {eventType === 'custom' ? (
             <EventTypeSign variant="legend" eventType="custom" />
@@ -146,7 +146,7 @@ const EventForm: FC<EventFormProps> = ({ editFormInitialState, modalClose }) => 
           id="content"
           {...register('content', {
             required: 'Required field',
-            minLength: { value: 10, message: 'Description needs at least 10 characters.' },
+            minLength: { value: 5, message: 'Description needs at least 5 characters.' },
             maxLength: { value: 200, message: 'Keep the description under 200 characters.' },
           })}
           className={mergeClasses(
